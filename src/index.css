@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@reference "tailwindcss";
+
+@theme {
+  --color-shamrock-50: #c3fee1;
+  --color-shamrock-100: #4bfbb9;
+  --color-shamrock-200: #41dda3;
+  --color-shamrock-300: #3bcb95;
+  --color-shamrock-400: #33b283;
+  --color-shamrock-500: #29976e;
+  --color-shamrock-600: #207a58;
+  --color-shamrock-700: #165c42;
+  --color-shamrock-800: #0c3f2c;
+  --color-shamrock-900: #042317;
+  --color-shamrock-950: #02140c;
+}
+
+@layer base {
+  html {
+    font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Quicksand', 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  }
+
+  body {
+    @apply bg-white text-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 transition-colors duration-300 ease-out;
+  }
+
+  ::selection {
+    background-color: rgb(75 251 185 / 0.35); /* shamrock-100 with opacity */
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-xl bg-shamrock-500 px-4 py-2 text-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-shamrock-400 hover:shadow-md active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-shamrock-200;
+  }
+
+  .card {
+    @apply relative overflow-hidden rounded-2xl border border-neutral-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl dark:border-neutral-800/80 dark:bg-neutral-900/60;
+  }
+
+  .tag {
+    @apply rounded-full border border-neutral-200/70 bg-neutral-50 px-3 py-1 text-xs font-medium text-neutral-600 transition-colors duration-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300;
+  }
+}
