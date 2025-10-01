@@ -10,6 +10,9 @@ import garden1 from './assets/garden1.png'
 import garden2 from './assets/garden2.png'
 import garden3 from './assets/garden3.png'
 import garden4 from './assets/garden4.png'
+import artboard1 from './assets/Artboard 1.png'
+import lanyard from './assets/lanyard.png'
+import frameBahalaNani from './assets/Frame Bahala nani.png'
 
 type Post = {
   id: string
@@ -62,6 +65,7 @@ function App() {
           <nav className="hidden gap-6 text-sm md:flex">
             <a className="text-neutral-600 transition-colors hover:text-shamrock-500 dark:text-neutral-300" href="#posts">Posts</a>
             <a className="text-neutral-600 transition-colors hover:text-shamrock-500 dark:text-neutral-300" href="#about">About</a>
+            <a className="text-neutral-600 transition-colors hover:text-shamrock-500 dark:text-neutral-300" href="#graphics">Graphics</a>
             <a className="text-neutral-600 transition-colors hover:text-shamrock-500 dark:text-neutral-300" href="#contact">Contact</a>
           </nav>
           <div className="flex items-center gap-2">
@@ -88,7 +92,33 @@ function App() {
           <div className="pointer-events-none absolute -right-24 -bottom-24 -z-10 aspect-square w-72 rounded-full bg-shamrock-100 opacity-70 blur-3xl dark:bg-shamrock-800/40" />
         </section>
 
-        <section id="posts" className="grid grid-cols-1 gap-6 pb-20 sm:grid-cols-2 lg:grid-cols-3">
+        <section id="graphics" className="mt-14 rounded-3xl border border-neutral-200/80 bg-white/70 p-8 shadow-sm backdrop-blur-sm transition-colors duration-300 dark:border-neutral-800 dark:bg-neutral-900/50 sm:p-12">
+          <div className="mx-auto max-w-5xl">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight">Graphics</h2>
+                <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Recent graphic works and mockups.</p>
+              </div>
+            </div>
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {[
+                { src: artboard1, title: 'Brand Logo', desc: 'Brand logo I designed for a vegan restaurant.' },
+                { src: lanyard, title: 'Lanyard Design', desc: 'My own version design of our school lanyard.' },
+                { src: frameBahalaNani, title: 'Organization Frame', desc: 'Frame I designed for a school organization.' }
+              ].map((item, i) => (
+                <figure key={i} className="group relative overflow-hidden rounded-xl border border-neutral-200/70 bg-white/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-neutral-800/70 dark:bg-neutral-900/50">
+                  <img src={item.src} alt={item.title} className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading="lazy" />
+                  <figcaption className="p-3">
+                    <p className="text-sm font-medium">{item.title}</p>
+                    <p className="mt-1 text-xs text-neutral-600 dark:text-neutral-300">{item.desc}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="posts" className="mt-10 grid grid-cols-1 gap-6 pb-20 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <article key={post.id} className="group card">
               <a href={`#/post/${post.id}`} className="block">
@@ -148,6 +178,53 @@ function App() {
                 <span className="tag">Design Systems</span>
                 <span className="tag">Framer Motion</span>
               </div>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <h3 className="text-sm font-semibold">Tech Stack</h3>
+                  <div className="mt-2 flex flex-wrap gap-2 text-sm">
+                    <span className="tag">PHP</span>
+                    <span className="tag">Java</span>
+                    <span className="tag">JavaScript</span>
+                    <span className="tag">C++</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold">Frameworks</h3>
+                  <div className="mt-2 flex flex-wrap gap-2 text-sm">
+                    <span className="tag">Laravel</span>
+                    <span className="tag">Symfony</span>
+                    <span className="tag">React</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold">UI/UX</h3>
+                  <div className="mt-2 flex flex-wrap gap-2 text-sm">
+                    <span className="tag">Photoshop</span>
+                    <span className="tag">Illustrator</span>
+                    <span className="tag">Figma</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold">Recent Learning</h3>
+                  <div className="mt-2 flex flex-wrap gap-2 text-sm">
+                    <span className="tag">Typescript</span>
+                    <span className="tag">Next.js</span>
+                    <span className="tag">React Native</span>
+                    <span className="tag">LLMs / Machine Learning</span>
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <h3 className="text-sm font-semibold">Other</h3>
+                  <div className="mt-2 flex flex-wrap gap-2 text-sm">
+                    <span className="tag">Tailwind CSS</span>
+                    <span className="tag">Bootstrap</span>
+                    <span className="tag">Adobe Animate</span>
+                    <span className="tag">Networking</span>
+                    <span className="tag">Python</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="mx-auto mt-10 max-w-5xl">
@@ -172,10 +249,9 @@ function App() {
                 Have a project in mind or just want to say hi? Reach out via the form or any of the links below.
               </p>
               <div className="mt-6 flex flex-wrap gap-3 text-sm">
-                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="mailto:hello@example.com">hello@example.com</a>
-                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="#">Twitter</a>
-                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="#">GitHub</a>
-                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="#">LinkedIn</a>
+                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="mailto:pacificooyanib@gmail.com">pacificooyanib@gmail.com</a>
+                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="https://facebook.com" target="_blank" rel="noreferrer">Facebook: Pacifico M. Oyanib III</a>
+                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="https://github.com/oyanibTech-iii" target="_blank" rel="noreferrer">GitHub: oyanibTech-iii</a>
               </div>
             </div>
             <form
@@ -187,7 +263,7 @@ function App() {
                 const name = String(data.get('name') || '')
                 const email = String(data.get('email') || '')
                 const message = String(data.get('message') || '')
-                const mailto = `mailto:hello@example.com?subject=${encodeURIComponent('Portfolio contact from ' + name)}&body=${encodeURIComponent(message + '\n\nfrom: ' + name + ' <' + email + '>')}`
+                const mailto = `mailto:pacificooyanib@gmail.com?subject=${encodeURIComponent('Portfolio contact from ' + name)}&body=${encodeURIComponent(message + '\n\nfrom: ' + name + ' <' + email + '>')}`
                 window.location.href = mailto
               }}
             >
@@ -247,23 +323,27 @@ function App() {
         </section>
       </main>
 
-      <footer id="about" className="border-t border-neutral-200/80 py-10 text-sm text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
+      <footer id="about" className="mt-10 border-t border-neutral-200/80 py-10 text-sm text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
               <h4 className="text-base font-semibold text-neutral-800 dark:text-neutral-100">About</h4>
               <p className="mt-2 max-w-prose">I’m a frontend engineer and designer who enjoys making fast, friendly interfaces.</p>
+              <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="mailto:pacificooyanib@gmail.com">pacificooyanib@gmail.com</a>
+                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="https://facebook.com" target="_blank" rel="noreferrer">Facebook: Pacifico M. Oyanib III</a>
+                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="https://github.com/oyanibTech-iii" target="_blank" rel="noreferrer">GitHub: oyanibTech-iii</a>
+              </div>
             </div>
             <div>
               <h4 className="text-base font-semibold text-neutral-800 dark:text-neutral-100">Links</h4>
               <div className="mt-2 flex flex-wrap gap-3">
-                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="#">Twitter</a>
-                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="#">GitHub</a>
-                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="#">LinkedIn</a>
+                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a>
+                <a className="tag hover:border-shamrock-300 hover:text-shamrock-600" href="https://github.com/oyanibTech-iii" target="_blank" rel="noreferrer">GitHub</a>
               </div>
             </div>
           </div>
-          <p className="mt-8">© {new Date().getFullYear()} Your Name. All rights reserved.</p>
+          <p className="mt-8">© {new Date().getFullYear()} Pacifico M. Oyanib III. All rights reserved.</p>
         </div>
       </footer>
     </div>
