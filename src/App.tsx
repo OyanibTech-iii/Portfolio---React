@@ -1,4 +1,5 @@
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
+import GitHubLanguageProgress from './components/GitHubLanguageProgress'
 import profileImg from './assets/profile.png'
 import img01 from './assets/01.png'
 import img02 from './assets/02.png'
@@ -12,6 +13,9 @@ import garden3 from './assets/garden3.png'
 import garden4 from './assets/garden4.png'
 import artboard1 from './assets/Artboard 1.png'
 import lanyard from './assets/lanyard.png'
+import myimageImg from './assets/myimage.png'
+import certImg from './assets/e-cert.png'
+import cert2Img from './assets/e-cert-2.png'
 import frameBahalaNani from './assets/Frame Bahala nani.png'
 
 type Post = {
@@ -25,6 +29,28 @@ type Post = {
 }
 
 function App() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalCert, setModalCert] = useState<{ src: string; title: string; issuer: string; year: string; url?: string } | null>(null)
+
+  useEffect(() => {
+    // prevent body scroll when modal is open
+    if (modalOpen) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [modalOpen])
+
+  const openCertModal = (c: { src: string; title: string; issuer: string; year: string; url?: string }) => {
+    setModalCert(c)
+    setModalOpen(true)
+  }
+
+  const closeCertModal = () => {
+    setModalOpen(false)
+    setTimeout(() => setModalCert(null), 200)
+  }
+
   const posts = useMemo<Post[]>(() => [
     {
       id: 'intro-tailwind-motion',
@@ -156,13 +182,67 @@ function App() {
 
         <section id="about" className="relative isolate overflow-hidden rounded-3xl border border-neutral-200/80 bg-white/70 p-8 shadow-sm backdrop-blur-sm transition-colors duration-300 dark:border-neutral-800 dark:bg-neutral-900/50 sm:p-12">
           <div className="mx-auto grid max-w-5xl grid-cols-1 items-start gap-8 md:grid-cols-3">
-            <div className="md:col-span-1">
+            <div className="md:col-span-1 grid grid-cols-2 gap-4">
               <img
                 src={profileImg}
-                alt="Profile portrait"
-                className="h-36 w-36 rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
+                alt="Profile portrait 1"
+                className="h-40 w-full rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
                 loading="lazy"
               />
+              <img
+                src={myimageImg}
+                alt="Profile portrait 2"
+                className="h-40 w-full rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
+                loading="lazy"
+              />
+              <img
+                src={profileImg}
+                alt="Profile portrait 3"
+                className="h-40 w-full rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
+                loading="lazy"
+              />
+              <img
+                src={profileImg}
+                alt="Profile portrait 4"
+                className="h-40 w-full rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
+                loading="lazy"
+              />
+              <img
+                src={profileImg}
+                alt="Profile portrait 5"
+                className="h-40 w-full rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
+                loading="lazy"
+              />
+                <img
+                  src={profileImg}
+                  alt="Profile portrait 6"
+                  className="h-40 w-full rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
+                  loading="lazy"
+                />
+                <img
+                  src={profileImg}
+                  alt="Profile portrait 7"
+                  className="h-40 w-full rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
+                  loading="lazy"
+                />
+                <img
+                  src={profileImg}
+                  alt="Profile portrait 8"
+                  className="h-40 w-full rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
+                  loading="lazy"
+                />
+                <img
+                  src={profileImg}
+                  alt="Profile portrait 9"
+                  className="h-40 w-full rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
+                  loading="lazy"
+                />
+                <img
+                  src={profileImg}
+                  alt="Profile portrait 10"
+                  className="h-40 w-full rounded-2xl object-cover shadow-md ring-1 ring-neutral-200/70 dark:ring-neutral-800"
+                  loading="lazy"
+                />
             </div>
             <div className="md:col-span-2">
               <h2 className="text-2xl font-semibold tracking-tight">About me</h2>
@@ -177,6 +257,10 @@ function App() {
                 <span className="tag">Tailwind CSS</span>
                 <span className="tag">Design Systems</span>
                 <span className="tag">Framer Motion</span>
+              </div>
+
+              <div className="mt-6">
+                <GitHubLanguageProgress username="OyanibTech-iii" />
               </div>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -238,8 +322,70 @@ function App() {
               ))}
             </div>
           </div>
+          <div className="mx-auto mt-12 max-w-5xl">
+            <h3 className="text-lg font-semibold">E‑Certificates & Awards</h3>
+            <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Selected certificates and awards — click to view the certificate.</p>
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {[
+                { src: certImg, title: 'Intellectual Property', issuer: 'Mindoro State University', year: '2025' },
+                { src: cert2Img, title: 'Internet of Things', issuer: 'Mindoro State University', year: '2025' },
+                { src: myimageImg, title: 'UI Design', issuer: 'Design School', year: '2023' },
+                { src: myimageImg, title: 'Backend Basics', issuer: 'Dev Institute', year: '2022' }
+              ].map((c, i) => (
+                <figure key={i} className="group relative overflow-hidden rounded-xl border border-neutral-200/70 bg-white/60 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-neutral-800/70 dark:bg-neutral-900/50">
+                  <img src={c.src} alt={c.title} className="h-40 w-full object-cover rounded-md" loading="lazy" />
+                  <figcaption className="mt-3">
+                    <div className="flex items-baseline justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">{c.title}</p>
+                        <p className="mt-1 text-xs text-neutral-600 dark:text-neutral-300">{c.issuer} • {c.year}</p>
+                      </div>
+                      <button
+                        onClick={() => openCertModal(c)}
+                        className="ml-4 inline-flex items-center rounded-md border border-shamrock-200/70 bg-shamrock-50 px-2 py-1 text-xs font-medium text-shamrock-700 hover:bg-shamrock-100"
+                        type="button"
+                      >
+                        View
+                      </button>
+                    </div>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
           <div className="pointer-events-none absolute -right-24 -top-24 -z-10 h-56 w-56 rounded-full bg-shamrock-100 opacity-60 blur-3xl dark:bg-shamrock-800/40" />
         </section>
+
+        {modalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={closeCertModal} />
+            <div className="relative z-50 mx-4 w-full max-w-3xl rounded-xl bg-white p-6 shadow-xl dark:bg-neutral-900">
+              <button
+                onClick={closeCertModal}
+                className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+              {modalCert && (
+                <div className="grid gap-4 md:grid-cols-2">
+                  <img src={modalCert.src} alt={modalCert.title} className="h-64 w-full rounded-md object-cover" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{modalCert.title}</h3>
+                    <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">{modalCert.issuer} • {modalCert.year}</p>
+                    <div className="mt-4">
+                      {modalCert.url ? (
+                        <a href={modalCert.url} target="_blank" rel="noreferrer" className="btn-primary inline-block">Open certificate</a>
+                      ) : (
+                        <span className="inline-flex items-center rounded-md border border-neutral-200 px-3 py-2 text-sm">No link provided</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         <section id="contact" className="mt-14 rounded-3xl border border-neutral-200/80 bg-white/70 p-8 shadow-sm backdrop-blur-sm transition-colors duration-300 dark:border-neutral-800 dark:bg-neutral-900/50 sm:p-12">
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 md:grid-cols-2">
@@ -343,7 +489,7 @@ function App() {
               </div>
             </div>
           </div>
-          <p className="mt-8">© {new Date().getFullYear()} Pacifico M. Oyanib III. All rights reserved.</p>
+          <p className="mt-8">© {new Date().getFullYear()}&copy Pacifico M. Oyanib III. All rights reserved.</p>
         </div>
       </footer>
     </div>
