@@ -9,7 +9,10 @@ export default defineConfig({
     host: true, // makes the server accessible externally
     port: 5175, // optional, you can set the port
     allowedHosts: [
-      'nonhostile-londa-wheaten.ngrok-free.dev' // allow your ngrok hostname
+      'nonhostile-londa-wheaten.ngrok-free.dev', // allow your ngrok hostname
+      'released-portfolio.onrender.com', // allow Render deployment
+      'localhost',
+      '127.0.0.1'
     ]
   }
 })
