@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Flat } from '@alptugidin/react-circular-progress-bar'
 
-type LangMap = Record<string, number>
-
 function formatPercent(value: number) {
   return Math.round(value)
 }

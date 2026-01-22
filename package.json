@@ -10,10 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.13",
     "@alptugidin/react-circular-progress-bar": "^1.0.0",
+    "@emailjs/browser": "^4.4.1",
+    "@tailwindcss/vite": "^4.1.13",
+    "feather-icons": "^4.29.2",
+    "framer-motion": "^12.27.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-feather": "^2.0.10",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {

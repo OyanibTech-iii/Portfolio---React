@@ -40,6 +40,92 @@
 @layer components {
   .btn-primary {
     @apply inline-flex items-center gap-2 rounded-xl bg-shamrock-500 px-4 py-2 text-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-shamrock-400 hover:shadow-md active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-shamrock-200;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Enhanced button with ripple effect */
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .btn-primary:active::before {
+    animation: ripple 600ms ease-out;
+  }
+
+  @keyframes ripple {
+    to {
+      width: 300px;
+      height: 300px;
+      opacity: 0;
+    }
+  }
+
+  /* Button with glow effect on hover */
+  .btn-glow {
+    @apply inline-flex items-center gap-2 rounded-xl bg-shamrock-500 px-4 py-3 text-white font-medium transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-shamrock-300;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(41, 151, 110, 0.3);
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 8px 25px rgba(41, 151, 110, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 600ms ease-in-out;
+  }
+
+  .btn-glow:hover::before {
+    left: 100%;
+  }
+
+  /* Button with scale animation */
+  .btn-scale {
+    @apply inline-flex items-center gap-2 rounded-xl bg-shamrock-500 px-4 py-3 text-white font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-shamrock-300;
+    transform: scale(1);
+  }
+
+  .btn-scale:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(41, 151, 110, 0.4);
+  }
+
+  .btn-scale:active {
+    transform: scale(0.96);
+  }
+
+  /* Gradient button */
+  .btn-gradient {
+    @apply inline-flex items-center gap-2 rounded-xl px-4 py-3 text-white font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-shamrock-300;
+    background: linear-gradient(135deg, #29976e 0%, #207a58 100%);
+    box-shadow: 0 4px 20px rgba(41, 151, 110, 0.3);
+  }
+
+  .btn-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(41, 151, 110, 0.5);
+  }
+
+  .btn-gradient:active {
+    transform: translateY(-1px);
   }
 
   .card {
