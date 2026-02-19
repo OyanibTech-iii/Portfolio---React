@@ -44,6 +44,10 @@ export default defineConfig([
 ])
 ```
 
+## Projects ✅
+
+- **Determinant Calculator** (Python desktop APK; APK name: *Determinant calculator*) — Download: [determinantAPKv4.0.zip](https://github.com/OyanibTech-iii/Determinant-Calculator-/archive/refs/tags/determinantAPKv4.0.zip)
+
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
