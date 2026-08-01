@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { Download, Monitor, Terminal } from 'react-feather'
+import { Monitor, Terminal } from 'react-feather'
+import { PiCloudArrowDown } from 'react-icons/pi'
 
 interface DownloadModalProps {
   project: { title: string; downloadLink: string } | null
@@ -43,7 +44,7 @@ export default function DownloadModal({ project, onClose }: DownloadModalProps) 
             className="flex items-start gap-3 rounded-lg border border-shamrock-200/70 bg-shamrock-50 px-4 py-3 text-sm font-medium text-shamrock-700 hover:bg-shamrock-100 transition-colors dark:border-shamrock-800/70 dark:bg-shamrock-900/30 dark:text-shamrock-300 dark:hover:bg-shamrock-900/50"
             onClick={onClose}
           >
-            <Download className="h-5 w-5 flex-shrink-0 mt-0.5" />
+            <PiCloudArrowDown className="h-5 w-5 flex-shrink-0 mt-0.5" />
             <div>
               <span className="block font-semibold">Windows</span>
               <span className="block text-xs text-neutral-600 dark:text-neutral-400 mt-0.5">For Windows 10+</span>

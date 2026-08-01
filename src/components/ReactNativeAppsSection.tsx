@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { Download, type LucideIcon } from 'lucide-react'
+import { type LucideIcon } from 'lucide-react'
+import { PiCloudArrowDown } from 'react-icons/pi'
 import { Button } from './ui/button'
 import growfico3dLogo from '../assets/3d logo.png'
 
@@ -93,7 +94,7 @@ export default function ReactNativeAppsSection({ onOpenDownloadModal }: ReactNat
                       animate={{ y: [0, 2, 0] }}
                       transition={{ duration: 1, repeat: Infinity }}
                     >
-                      <Download className="ml-2 h-4 w-4" />
+                      <PiCloudArrowDown className="ml-2 h-5 w-5" />
                     </motion.div>
                   </Button>
                 </div>

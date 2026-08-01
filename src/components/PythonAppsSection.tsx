@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { Download, Calculator } from 'lucide-react'
+import { Calculator } from 'lucide-react'
+import { PiCloudArrowDown } from 'react-icons/pi'
 import { Button } from './ui/button'
 
 interface PythonAppsSectionProps {
@@ -81,7 +82,7 @@ export default function PythonAppsSection({ onOpenDownloadModal }: PythonAppsSec
                       animate={{ y: [0, 2, 0] }}
                       transition={{ duration: 1, repeat: Infinity }}
                     >
-                      <Download className="ml-2 h-4 w-4" />
+                      <PiCloudArrowDown className="ml-2 h-5 w-5" />
                     </motion.div>
                   </Button>
                 </div>

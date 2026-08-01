@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ExternalLink, Layout, Quote, ShieldAlert } from 'lucide-react'
+import { Layout, Quote, ShieldAlert } from 'lucide-react'
 import { Button } from './ui/button'
 import ficoLogo from '../assets/fico.png'
 import styledQrLogo from '../assets/officiallogo.png'
@@ -113,7 +113,9 @@ export default function WebAPKsSection() {
                   <a href={apk.link} target="_blank" rel="noreferrer" className="inline-block w-full">
                     <Button variant="outline" className="w-full group/btn rounded-xl transition-all duration-300 hover:bg-shamrock-500 hover:text-white dark:hover:bg-shamrock-600 border-neutral-200 dark:border-neutral-700">
                       Visit Live Application
-                      <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256" className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">
+                        <path d="M168,96v48a8,8,0,0,1-16,0V115.31l-50.34,50.35a8,8,0,0,1-11.32-11.32L140.69,104H112a8,8,0,0,1,0-16h48A8,8,0,0,1,168,96Zm64,32A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+                      </svg>
                     </Button>
                   </a>
                 </div>
