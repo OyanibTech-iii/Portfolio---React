@@ -14,8 +14,8 @@ const ThemeOption = ({label, icon, selected, onSelect }: { value: Theme; label: 
       className={cn(
         "flex items-center gap-2 w-full px-3 py-2 rounded-md text-sm transition-colors",
         selected
-          ? "bg-gray-200 text-foreground dark:bg-muted"
-          : "hover:bg-accent/50 hover:text-accent-foreground text-muted-foreground"
+          ? "bg-gray-200 text-foreground dark:bg-neutral-800 dark:text-white"
+          : "text-neutral-600 hover:bg-gray-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white"
       )}
       onClick={onSelect}
     >
@@ -110,7 +110,7 @@ export const AnimatedThemeToggle = ({ className }: { className?: string }) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="w-48 p-2 sm:w-56 sm:p-3 bg-background data-[state=open]:animate-[popover-in_200ms_ease-out] data-[state=closed]:animate-[popover-out_150ms_ease-in]"
+        className="w-48 p-2 sm:w-56 sm:p-3 bg-popover text-popover-foreground data-[state=open]:animate-[popover-in_200ms_ease-out] data-[state=closed]:animate-[popover-out_150ms_ease-in]"
         align="start"
         sideOffset={8}
       >
