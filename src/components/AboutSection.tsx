@@ -60,13 +60,6 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
 
   return (
     <section id="about" className="relative isolate overflow-hidden rounded-3xl bg-white/70 p-8 backdrop-blur-sm transition-colors duration-300 dark:bg-neutral-900/50 sm:p-12">
-      <svg xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', width: 0, height: 0 }}>
-        <defs>
-          <clipPath id="profile-inverted" clipPathUnits="objectBoundingBox">
-            <path d="M0.2,0 H0.8929 A0.1071,0.1071,0,0,1,1,0.1071 V0.8 C1,0.85 0.85,1 0.7,1 H0.1 A0.1,0.1,0,0,1,0,0.9 V0.3 C0.15,0.3 0.2,0.15 0.2,0 Z" />
-          </clipPath>
-        </defs>
-      </svg>
       <div className="mx-auto grid max-w-5xl grid-cols-1 items-start gap-12 md:grid-cols-3">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -81,8 +74,7 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
             viewport={{ margin: '-50px' }}
             src={profileImg}
             alt="Profile portrait"
-            className="w-full object-cover shadow-2xl ring-1 ring-neutral-200/70 dark:ring-neutral-800 aspect-square"
-            style={{ clipPath: 'url(#profile-inverted)' }}
+            className="w-full object-cover rounded-lg shadow-2xl ring-1 ring-neutral-200/70 dark:ring-neutral-800 aspect-square"
             loading="lazy"
           />
           
