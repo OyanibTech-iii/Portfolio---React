@@ -10,6 +10,7 @@ import JavaAppsSection from './components/JavaAppsSection'
 import PythonAppsSection from './components/PythonAppsSection'
 import ReactNativeAppsSection from './components/ReactNativeAppsSection'
 import AboutSection from './components/AboutSection'
+import WorkshopsSection from './components/WorkshopsSection'
 import NetworkingSection from './components/NetworkingSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
@@ -177,6 +178,7 @@ function Portfolio() {
           <Hero />
         </section>
         <AboutSection onOpenCertModal={openCertModal} />
+        <WorkshopsSection />
         <GraphicsSection onOpenDeviceModal={openDeviceModal} />
         <WebAPKsSection />
         <YouTubeTutorialsSection />

@@ -3,12 +3,7 @@ import { motion } from 'framer-motion'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, Cell, LabelList } from 'recharts'
 import { ProgressBarCircle } from "@/components/base/progress-indicators/progress-circles"
 import profileImg from '../assets/profile.png'
-import img01 from '../assets/01.png'
-import img02 from '../assets/02.png'
-import img03 from '../assets/03.png'
-import img04 from '../assets/04.png'
-import img05 from '../assets/05.png'
-import img06 from '../assets/06.png'
+
 import certImg from '../assets/e-cert.png'
 import cert2Img from '../assets/e-cert-2.png'
 import cisspCertImg from '../assets/cissp certification.png'
@@ -17,7 +12,6 @@ import isc2Cert2Img from '../assets/isc2 cert/cc domain 2.png'
 import isc2Cert3Img from '../assets/isc2 cert/cc domain 3.png'
 import isc2Cert4Img from '../assets/isc2 cert/cc domain 4.png'
 import isc2Cert5Img from '../assets/isc2 cert/cc domain 5.png'
-import { ImageWithSkeleton } from './ui/image-with-skeleton'
 import { Button } from './ui/button'
 
 interface AboutSectionProps {
@@ -43,7 +37,6 @@ const focusData = [
 ];
 
 export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
-  const [showWorkshops, setShowWorkshops] = useState(false)
   const [showAccreditations, setShowAccreditations] = useState(false)
   const certificates = [
     { src: certImg, title: 'Intellectual Property', issuer: 'Mindoro State University', year: '2025' },
@@ -55,8 +48,6 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
     { src: isc2Cert4Img, title: 'Certified in Cybersecurity Domain 4', issuer: 'ISC2', year: '2026' },
     { src: isc2Cert5Img, title: 'Certified in Cybersecurity Domain 5', issuer: 'ISC2', year: '2026' }
   ]
-
-  const workshops = [img01, img02, img03, img04, img05, img06]
 
   return (
     <section id="about" className="relative isolate overflow-hidden rounded-3xl bg-white/70 p-8 backdrop-blur-sm transition-colors duration-300 dark:bg-neutral-900/50 sm:p-12">
@@ -183,44 +174,7 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
           </div>
         </motion.div>
       </div>
-      
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ margin: '-50px' }}
-        transition={{ duration: 0.5 }}
-        className="mx-auto mt-16 max-w-5xl"
-      >
-        <button 
-          onClick={() => setShowWorkshops(!showWorkshops)}
-          className="flex items-center justify-between w-full mb-8 group"
-        >
-          <h3 className="text-xl font-bold text-neutral-900 dark:text-white group-hover:text-shamrock-600 dark:group-hover:text-shamrock-400 transition-colors">Workshops & Training</h3>
-          <span className="text-sm text-neutral-500 dark:text-neutral-400 group-hover:text-shamrock-600 dark:group-hover:text-shamrock-400 transition-colors">{showWorkshops ? 'Hide' : 'Show'} Images</span>
-        </button>
-        {showWorkshops && (
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-            {workshops.map((src, i) => (
-              <motion.figure
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="group relative overflow-hidden rounded-2xl border border-neutral-200/70 bg-white/60 shadow-sm transition-all duration-300 dark:border-neutral-800/70 dark:bg-neutral-900/50"
-              >
-                <ImageWithSkeleton
-                  src={src}
-                  alt={`Workshop ${i + 1}`}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-                  containerClassName="h-full w-full"
-                  loading="lazy"
-                />
-              </motion.figure>
-            ))}
-          </div>
-        )}
-      </motion.div>
+
       
       <motion.div
         initial={{ opacity: 0, y: 30 }}
