@@ -20,7 +20,7 @@ export const ProgressBarCircle = ({ size, label, min, max, value }: ProgressBarC
   const dimension = sizeMap[size];
   
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center gap-3 progress-circle-wrapper text-neutral-900 dark:text-white">
       <div style={{ width: dimension, height: dimension }}>
         <Flat
           progress={value}
@@ -45,9 +45,6 @@ export const ProgressBarCircle = ({ size, label, min, max, value }: ProgressBarC
       <div className="flex flex-col items-center gap-1">
         <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 text-center leading-tight max-w-[80px]">
           {label}
-        </span>
-        <span className="text-xs font-bold text-shamrock-600 dark:text-shamrock-400">
-          {value}%
         </span>
       </div>
     </div>

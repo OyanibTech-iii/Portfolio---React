@@ -113,12 +113,9 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
             logic and delightful user experiences through clean code and modern design systems.
           </p>
           
-          <div className="mt-8 flex flex-wrap gap-3">
-            {['React', 'Laravel', 'TypeScript', 'Next.js', 'Python', 'Tailwind CSS'].map(skill => (
-              <span key={skill} className="px-3 py-1 text-sm font-medium rounded-full bg-shamrock-500/10 text-shamrock-700 dark:bg-shamrock-500/20 dark:text-shamrock-300 border border-shamrock-500/20">
-                {skill}
-              </span>
-            ))}
+          <div className="mt-8">
+            <h3 className="text-lg font-bold text-neutral-900 dark:text-white">Bachelor of Information Technology</h3>
+            <p className="text-sm font-medium text-shamrock-600 dark:text-shamrock-400 mt-1">Negros Oriental State University</p>
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
