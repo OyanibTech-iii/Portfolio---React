@@ -1,10 +1,12 @@
 import { cn } from "@/lib/utils";
 import { useState, useEffect, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "./button";
 
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 
 import { MoonIcon, SunIcon, Monitor } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Theme = "system" | "light" | "dark";
 
@@ -27,6 +29,8 @@ const ThemeOption = ({label, icon, selected, onSelect }: { value: Theme; label: 
 };
 
 export const AnimatedThemeToggle = ({ className }: { className?: string }) => {
+  const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("theme") as Theme | null;
@@ -43,6 +47,15 @@ export const AnimatedThemeToggle = ({ className }: { className?: string }) => {
     }
     return theme === "dark";
   });
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -70,6 +83,7 @@ export const AnimatedThemeToggle = ({ className }: { className?: string }) => {
   const handleThemeChange = (newTheme: Theme) => {
     setTheme(newTheme);
     setIsDark(newTheme === "dark" || (newTheme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches));
+    setOpen(false);
   };
 
   const getThemeIcon = () => {
@@ -93,8 +107,89 @@ export const AnimatedThemeToggle = ({ className }: { className?: string }) => {
     return "text-muted-foreground";
   };
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const themeOptionsList = (
+    <div className="space-y-1">
+      <ThemeOption
+        value="system"
+        label="System"
+        icon={<Monitor size={16} className={isDark ? "text-muted-foreground" : "text-foreground"} />}
+        selected={theme === "system"}
+        onSelect={() => handleThemeChange("system")}
+      />
+      <ThemeOption
+        value="light"
+        label="Light"
+        icon={<SunIcon size={16} className="text-muted-foreground" />}
+        selected={theme === "light"}
+        onSelect={() => handleThemeChange("light")}
+      />
+      <ThemeOption
+        value="dark"
+        label="Dark"
+        icon={<MoonIcon size={16} className="text-muted-foreground" />}
+        selected={theme === "dark"}
+        onSelect={() => handleThemeChange("dark")}
+      />
+    </div>
+  );
+
+  const MobileButton = () => (
+    <>
+      <Button
+        className={cn("px-2.5 hover:bg-transparent shadow-none transition-all duration-300", className)}
+        variant="ghost"
+        size="icon"
+        onClick={() => setOpen(!open)}
+      >
+        <div className="flex items-center gap-2">
+          {getThemeIcon()}
+          <span className="text-xs font-medium hidden sm:inline-block transition-colors duration-300" style={{ color: getThemeIconClass() }}>
+            {getThemeLabel()}
+          </span>
+        </div>
+      </Button>
+      {mounted && typeof document !== "undefined" && createPortal(
+        <AnimatePresence>
+          {open && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => setOpen(false)}
+                className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm"
+              />
+              <motion.div
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "100%" }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="fixed bottom-0 top-auto left-0 right-0 z-[9999] rounded-t-3xl border-t border-neutral-200/80 bg-white/95 p-6 pb-8 shadow-2xl backdrop-blur-xl dark:border-neutral-800 dark:bg-neutral-950/95"
+              >
+                <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+                <div className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4 pb-2 border-b border-neutral-100 dark:border-neutral-900">
+                  Select Theme
+                </div>
+                {themeOptionsList}
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+    </>
+  );
+
+  if (isMobile) {
+    return <MobileButton />;
+  }
+
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           className={cn("px-2.5 hover:bg-transparent shadow-none transition-all duration-300", className)}
@@ -110,33 +205,11 @@ export const AnimatedThemeToggle = ({ className }: { className?: string }) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="w-48 p-2 sm:w-56 sm:p-3 bg-popover text-popover-foreground data-[state=open]:animate-[popover-in_200ms_ease-out] data-[state=closed]:animate-[popover-out_150ms_ease-in]"
-        align="start"
+        className="w-56 p-3 bg-popover text-popover-foreground rounded-md shadow-md border border-neutral-200 dark:border-neutral-800"
+        align="end"
         sideOffset={8}
       >
-        <div className="space-y-1">
-          <ThemeOption
-            value="system"
-            label="System"
-            icon={<Monitor size={16} className={isDark ? "text-muted-foreground" : "text-foreground"} />}
-            selected={theme === "system"}
-            onSelect={() => handleThemeChange("system")}
-          />
-          <ThemeOption
-            value="light"
-            label="Light"
-            icon={<SunIcon size={16} className="text-muted-foreground" />}
-            selected={theme === "light"}
-            onSelect={() => handleThemeChange("light")}
-          />
-          <ThemeOption
-            value="dark"
-            label="Dark"
-            icon={<MoonIcon size={16} className="text-muted-foreground" />}
-            selected={theme === "dark"}
-            onSelect={() => handleThemeChange("dark")}
-          />
-        </div>
+        {themeOptionsList}
       </PopoverContent>
     </Popover>
   );
