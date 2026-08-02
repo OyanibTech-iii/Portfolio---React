@@ -167,14 +167,15 @@ function Portfolio() {
       setFormData({ name: '', email: '', message: '' })
       setToast({ type: 'success', message: 'Email sent successfully!' })
       setCooldown(20) // 20 seconds cooldown
-    } catch (error: any) {
-      console.error('Email send error:', error)
-      console.error('Error status:', error?.status)
-      console.error('Error text:', error?.text)
+    } catch (error) {
+      const emailError = error as { status?: number; text?: string };
+      console.error('Email send error:', emailError)
+      console.error('Error status:', emailError?.status)
+      console.error('Error text:', emailError?.text)
       
       // Fallback to mailto if EmailJS fails (400, 401, 403, 412)
-      if (error?.status === 400 || error?.status === 401 || error?.status === 403 || error?.status === 412) {
-        console.log('Falling back to mailto due to status:', error?.status)
+      if (emailError?.status === 400 || emailError?.status === 401 || emailError?.status === 403 || emailError?.status === 412) {
+        console.log('Falling back to mailto due to status:', emailError?.status)
         const mailtoLink = `mailto:pacificooyanib@gmail.com?subject=${encodeURIComponent('Portfolio contact from ' + formData.name)}&body=${encodeURIComponent(formData.message + '\n\nFrom: ' + formData.name + ' <' + formData.email + '>')}`
         window.location.href = mailtoLink
         return

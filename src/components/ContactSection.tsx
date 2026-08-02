@@ -1,13 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  User, 
-  Mail, 
-  MessageSquare, 
-  CheckCircle2, 
-  AlertCircle, 
   Loader2, 
-  Send, 
-  ExternalLink
 } from 'lucide-react'
 import { Facebook, GitHub as Github } from 'react-feather'
 

@@ -160,7 +160,7 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
                       <LabelList 
                         dataKey="value" 
                         position="right" 
-                        formatter={(value: any) => `${value}%`} 
+                        formatter={(value: number) => `${value}%`} 
                         className="fill-neutral-500 dark:fill-neutral-400 text-[10px] font-bold" 
                       />
                     </Bar>

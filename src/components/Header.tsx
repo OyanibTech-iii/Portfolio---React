@@ -14,11 +14,7 @@ const navItems = [
   { label: 'Contact', href: '#contact' },
 ]
 
-interface HeaderProps {
-  // Add props if needed, e.g., for theme toggle
-}
-
-export default function Header({}: HeaderProps) {
+export default function Header() {
   const [activeSection, setActiveSection] = useState('home')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)

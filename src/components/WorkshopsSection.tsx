@@ -85,7 +85,7 @@ export default function WorkshopsSection() {
             <button
               key={category}
               onClick={() => {
-                setActiveCategory(category as any)
+                setActiveCategory(category as 'all' | 'code-connect' | 'koica' | 'ilcdb')
                 setExpandedCard(null)
               }}
               className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 ${

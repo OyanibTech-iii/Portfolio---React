@@ -22,6 +22,7 @@ interface DockIconProps {
 
 type ScaleValueParams = [number, number]
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const scaleValue = function (
   value: number,
   from: ScaleValueParams,
