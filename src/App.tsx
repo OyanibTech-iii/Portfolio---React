@@ -34,6 +34,7 @@ function Portfolio() {
   const [formMessage, setFormMessage] = useState('')
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
+  const [cooldown, setCooldown] = useState(0)
 
   // Initialize EmailJS
   useEffect(() => {
@@ -58,6 +59,14 @@ function Portfolio() {
       return () => clearTimeout(timer)
     }
   }, [errors])
+
+  // Cooldown timer
+  useEffect(() => {
+    if (cooldown > 0) {
+      const timer = setTimeout(() => setCooldown(cooldown - 1), 1000)
+      return () => clearTimeout(timer)
+    }
+  }, [cooldown])
 
   // Auto-clear form messages after 2 seconds
   useEffect(() => {
@@ -107,6 +116,7 @@ function Portfolio() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Invalid email format'
     if (!formData.message.trim()) newErrors.message = 'Message is required'
     else if (formData.message.trim().length < 10) newErrors.message = 'Message must be at least 10 characters'
+    else if (formData.message.length > 500) newErrors.message = 'Message cannot exceed 500 characters'
     
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -125,6 +135,11 @@ function Portfolio() {
     
     if (!validateForm()) {
       setToast({ type: 'error', message: 'Please fill in all required fields correctly.' })
+      return
+    }
+
+    if (cooldown > 0) {
+      setToast({ type: 'error', message: `Please wait ${cooldown} seconds before sending another message.` })
       return
     }
 
@@ -151,6 +166,7 @@ function Portfolio() {
       setFormMessage('Message sent successfully! I\'ll get back to you soon.')
       setFormData({ name: '', email: '', message: '' })
       setToast({ type: 'success', message: 'Email sent successfully!' })
+      setCooldown(20) // 20 seconds cooldown
     } catch (error: any) {
       console.error('Email send error:', error)
       console.error('Error status:', error?.status)
@@ -191,6 +207,7 @@ function Portfolio() {
           formStatus={formStatus}
           formMessage={formMessage}
           errors={errors}
+          cooldown={cooldown}
           onFormChange={handleFormChange}
           onFormSubmit={handleFormSubmit}
         />

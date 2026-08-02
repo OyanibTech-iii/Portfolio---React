@@ -10,7 +10,7 @@ interface ToastNotificationProps {
 export default function ToastNotification({ toast, onClose }: ToastNotificationProps) {
   useEffect(() => {
     if (!toast) return
-    const timer = setTimeout(onClose, 5000)
+    const timer = setTimeout(onClose, 2000)
     return () => clearTimeout(timer)
   }, [toast, onClose])
 

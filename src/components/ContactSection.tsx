@@ -16,6 +16,7 @@ interface ContactSectionProps {
   formStatus: 'idle' | 'loading' | 'success' | 'error'
   formMessage: string
   errors: Record<string, string>
+  cooldown?: number
   onFormChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   onFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
@@ -44,6 +45,7 @@ export default function ContactSection({
   formStatus,
   formMessage,
   errors,
+  cooldown = 0,
   onFormChange,
   onFormSubmit
 }: ContactSectionProps) {
@@ -109,15 +111,14 @@ export default function ContactSection({
                   className={`group flex items-center justify-between p-4 rounded-2xl border border-neutral-200/60 bg-white/50 dark:border-neutral-800/60 dark:bg-neutral-900/40 backdrop-blur-md transition-all duration-300 ${link.color}`}
                 >
                   <div className="flex items-center gap-4">
-                    <div className="p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 group-hover:bg-white dark:group-hover:bg-neutral-700 transition-colors shadow-sm">
-                      {link.icon}
-                    </div>
                     <div>
                       <p className="text-xs font-bold uppercase tracking-wider text-neutral-400 group-hover:text-neutral-500 transition-colors">{link.name}</p>
                       <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">{link.handle}</p>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256" className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0">
+                    <path d="M168,96v48a8,8,0,0,1-16,0V115.31l-50.34,50.35a8,8,0,0,1-11.32-11.32L140.69,104H112a8,8,0,0,1,0-16h48A8,8,0,0,1,168,96Zm64,32A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+                  </svg>
                 </motion.a>
               ))}
             </motion.div>
@@ -142,11 +143,10 @@ export default function ContactSection({
                   {/* Name Field */}
                   <div className="space-y-2">
                     <label className="flex items-center gap-2 text-sm font-bold text-neutral-700 dark:text-neutral-300 ml-1">
-                      <User className="w-4 h-4 text-shamrock-500" />
                       Name
                     </label>
                     <input
-                      className={`w-full rounded-xl border ${errors.name ? 'border-red-400' : 'border-neutral-200 dark:border-neutral-800'} bg-white dark:bg-neutral-900 px-5 py-4 text-sm outline-none transition-all focus:ring-4 focus:ring-shamrock-500/10 focus:border-shamrock-500 dark:text-white`}
+                      className={`w-full rounded-xl border ${errors.name ? 'border-red-400' : 'border-neutral-200 dark:border-neutral-800'} bg-white dark:bg-neutral-900 px-5 py-4 text-sm outline-none transition-all focus:ring-2 focus:ring-shamrock-500/10 focus:border-shamrock-500 dark:text-white`}
                       type="text"
                       name="name"
                       placeholder="Your full name"
@@ -166,11 +166,10 @@ export default function ContactSection({
                   {/* Email Field */}
                   <div className="space-y-2">
                     <label className="flex items-center gap-2 text-sm font-bold text-neutral-700 dark:text-neutral-300 ml-1">
-                      <Mail className="w-4 h-4 text-shamrock-500" />
                       Email
                     </label>
                     <input
-                      className={`w-full rounded-xl border ${errors.email ? 'border-red-400' : 'border-neutral-200 dark:border-neutral-800'} bg-white dark:bg-neutral-900 px-5 py-4 text-sm outline-none transition-all focus:ring-4 focus:ring-shamrock-500/10 focus:border-shamrock-500 dark:text-white`}
+                      className={`w-full rounded-xl border ${errors.email ? 'border-red-400' : 'border-neutral-200 dark:border-neutral-800'} bg-white dark:bg-neutral-900 px-5 py-4 text-sm outline-none transition-all focus:ring-2 focus:ring-shamrock-500/10 focus:border-shamrock-500 dark:text-white`}
                       type="email"
                       name="email"
                       placeholder="email@example.com"
@@ -191,17 +190,22 @@ export default function ContactSection({
                 {/* Message Field */}
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-sm font-bold text-neutral-700 dark:text-neutral-300 ml-1">
-                    <MessageSquare className="w-4 h-4 text-shamrock-500" />
                     Message
                   </label>
                   <textarea
-                    className={`w-full rounded-xl border ${errors.message ? 'border-red-400' : 'border-neutral-200 dark:border-neutral-800'} bg-white dark:bg-neutral-900 px-5 py-4 text-sm outline-none transition-all focus:ring-4 focus:ring-shamrock-500/10 focus:border-shamrock-500 min-h-[150px] resize-none dark:text-white`}
+                    className={`w-full rounded-xl border ${errors.message ? 'border-red-400' : 'border-neutral-200 dark:border-neutral-800'} bg-white dark:bg-neutral-900 px-5 py-4 text-sm outline-none transition-all focus:ring-2 focus:ring-shamrock-500/10 focus:border-shamrock-500 min-h-[150px] resize-none dark:text-white`}
                     name="message"
                     placeholder="Tell me about your project or inquiry..."
                     value={formData.message}
                     onChange={onFormChange}
                     disabled={formStatus === 'loading'}
+                    maxLength={500}
                   />
+                  <div className="flex justify-between items-center px-1">
+                    <span className={`text-xs font-bold transition-colors ${formData.message.length >= 10 ? 'text-green-500' : 'text-red-500'}`}>
+                      {formData.message.length} / 500
+                    </span>
+                  </div>
                   <AnimatePresence>
                     {errors.message && (
                       <motion.p initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="text-xs font-medium text-red-500 ml-1">
@@ -224,7 +228,6 @@ export default function ContactSection({
                         : 'bg-red-500/10 text-red-600 border border-red-500/20'
                       }`}
                     >
-                      {formStatus === 'success' ? <CheckCircle2 className="w-5 h-5" /> : <AlertCircle className="w-5 h-5" />}
                       <span className="text-sm font-bold">{formMessage}</span>
                     </motion.div>
                   )}
@@ -233,18 +236,20 @@ export default function ContactSection({
                 {/* Submit Button */}
                 <motion.button
                   type="submit"
-                  disabled={formStatus === 'loading'}
+                  disabled={formStatus === 'loading' || cooldown > 0}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full relative group overflow-hidden py-5 rounded-2xl bg-shamrock-500 text-white font-bold flex items-center justify-center gap-2 transition-all hover:bg-shamrock-600 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-shamrock-500/25"
+                  className="w-full relative group overflow-hidden py-5 rounded-2xl bg-shamrock-500 text-white font-bold flex items-center justify-center gap-2 transition-all hover:bg-shamrock-600 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {formStatus === 'loading' ? (
-                    <Loader2 className="w-6 h-6 animate-spin" />
-                  ) : (
                     <>
-                      <span>Send Message</span>
-                      <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <span>Sending...</span>
                     </>
+                  ) : cooldown > 0 ? (
+                    <span>Wait {cooldown}s</span>
+                  ) : (
+                    <span>Send Message</span>
                   )}
                 </motion.button>
               </form>
