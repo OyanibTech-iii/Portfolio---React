@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import GraphicsSection from './components/GraphicsSection'
+import LayoutsSection from './components/LayoutsSection'
 import WebAPKsSection from './components/WebAPKsSection'
 import YouTubeTutorialsSection from './components/YouTubeTutorialsSection'
 import JavaAppsSection from './components/JavaAppsSection'
@@ -197,6 +198,7 @@ function Portfolio() {
         <AboutSection onOpenCertModal={openCertModal} />
         <WorkshopsSection />
         <GraphicsSection onOpenDeviceModal={openDeviceModal} />
+        <LayoutsSection onOpenDeviceModal={openDeviceModal} />
         <WebAPKsSection />
         <YouTubeTutorialsSection />
         <ReactNativeAppsSection onOpenDownloadModal={openDownloadModal} />

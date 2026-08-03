@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Loader2, 
 } from 'lucide-react'
-import { Facebook, GitHub as Github } from 'react-feather'
+import { Facebook, GitHub as Github, Mail } from 'react-feather'
 
 interface ContactSectionProps {
   formData: { name: string; email: string; message: string }
