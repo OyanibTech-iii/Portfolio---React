@@ -75,7 +75,6 @@ export default function GitHubLanguageProgress({ username = 'OyanibTech-iii' }: 
                   barWidth: 10,
                   valueSize: 16,
                   textSize: 11,
-                  fontWeight: 'bold',
                   strokeColor: '#737373',
                   bgStrokeColor: '#d1d5db',
                   valueColor: '#ffffff',

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, Cell, LabelList } from 'recharts'
 import { ProgressBarCircle } from "@/components/base/progress-indicators/progress-circles"
-import profileImg from '../assets/profile.png'
+import profileImg from '../assets/blackprofile.png'
 
 import certImg from '../assets/e-cert.png'
 import cert2Img from '../assets/e-cert-2.png'
@@ -65,7 +65,7 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
             viewport={{ margin: '-50px' }}
             src={profileImg}
             alt="Profile portrait"
-            className="w-full object-cover rounded-lg shadow-2xl ring-1 ring-neutral-200/70 dark:ring-neutral-800 aspect-square"
+            className="w-full object-contain rounded-lg"
             loading="lazy"
           />
           

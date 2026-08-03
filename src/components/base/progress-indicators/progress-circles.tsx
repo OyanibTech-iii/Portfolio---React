@@ -34,7 +34,7 @@ export const ProgressBarCircle = ({ size, label, min, max, value }: ProgressBarC
             shape: 'full',
             strokeLinecap: 'round',
             valueSize: dimension / 4.5,
-            valueWeight: '700',
+            valueWeight: 'bold',
             textColor: 'currentColor',
             loadingTime: 1000,
             valueAnimation: true,
