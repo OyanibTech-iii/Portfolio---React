@@ -25,6 +25,7 @@ export default function DeviceModal({ device, onClose }: DeviceModalProps) {
             src={device.src} 
             alt={device.title} 
             className="h-full w-full object-contain p-8 transition-transform duration-500 hover:scale-105" 
+            loading="lazy"
           />
         </div>
 

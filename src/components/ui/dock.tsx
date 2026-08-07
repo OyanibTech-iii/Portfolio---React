@@ -134,6 +134,7 @@ export function DockIcon({
               src={imageSrc}
               alt={name}
               className="h-full w-full rounded-[inherit]"
+              loading="lazy"
             />
           ) : (
             children

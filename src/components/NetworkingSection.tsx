@@ -184,6 +184,7 @@ export default function NetworkingSection({ onOpenDeviceModal }: NetworkingSecti
                         src={device.src} 
                         alt={device.title} 
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
                       />
                     </div>
                     <div className="p-4">

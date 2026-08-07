@@ -84,9 +84,9 @@ export default function WebAPKsSection() {
                       <IconComponent className="h-6 w-6" />
                     ) : (
                       <>
-                        <img src={apk.icon as string} alt={apk.name} className={`h-full w-full object-cover p-1 ${'darkIcon' in apk && apk.darkIcon ? 'dark:hidden' : ''}`} />
+                        <img src={apk.icon as string} alt={apk.name} className={`h-full w-full object-cover p-1 ${'darkIcon' in apk && apk.darkIcon ? 'dark:hidden' : ''}`} loading="lazy" />
                         {'darkIcon' in apk && apk.darkIcon ? (
-                          <img src={(apk as { darkIcon: string }).darkIcon} alt={apk.name} className="hidden h-full w-full object-cover p-1 dark:block" />
+                          <img src={(apk as { darkIcon: string }).darkIcon} alt={apk.name} className="hidden h-full w-full object-cover p-1 dark:block" loading="lazy" />
                         ) : null}
                       </>
                     )}

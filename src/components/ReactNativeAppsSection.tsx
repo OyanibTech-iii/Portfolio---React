@@ -60,7 +60,7 @@ export default function ReactNativeAppsSection({ onOpenDownloadModal }: ReactNat
                 <div className="mb-6 flex items-center justify-between">
                   <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-shamrock-500/10 text-shamrock-600 dark:bg-shamrock-500/20 dark:text-shamrock-400 overflow-hidden shadow-inner">
                     {typeof app.icon === 'string' ? (
-                      <img src={app.icon} alt={app.title} className="h-full w-full object-cover p-1" />
+                      <img src={app.icon} alt={app.title} className="h-full w-full object-cover p-1" loading="lazy" />
                     ) : (
                       <app.icon className="h-6 w-6 md:h-8 md:w-8" />
                     )}

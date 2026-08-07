@@ -1,46 +1,73 @@
+import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ImageWithSkeleton } from './ui/image-with-skeleton'
-import artboard1 from '../assets/Artboard 1.png'
-import lanyard from '../assets/lanyard.png'
-import frameBahalaNani from '../assets/Frame Bahala nani.png'
-import lambo from '../assets/lambo.png'
-import liquid from '../assets/LIQUID.png'
-import poster from '../assets/POSTER.png'
-import v3 from '../assets/v3.png'
-import banner00 from '../assets/graphics2/banner 00.png'
-import harvest from '../assets/graphics2/harvest.png'
-import misProject from '../assets/graphics2/Oyanib_Pacifico_MISFinalProject.png'
-import practice from '../assets/practice.png'
+import { EmptyState } from './ui/empty-state'
+import artboard1 from '../assets/logo/Artboard 1.png'
+import banner00 from '../assets/social media posts/banner 00.png'
+import frameBahalaNani from '../assets/social media posts/Frame Bahala nani.png'
+import poster from '../assets/posters/POSTER.png'
+import lambo from '../assets/posters/lambo.png'
+import liquid from '../assets/posters/LIQUID.png'
+import v3 from '../assets/posters/v3.png'
+import harvest from '../assets/posters/harvest.png'
+import practice from '../assets/posters/practice.png'
+import misProject from '../assets/posters/Oyanib_Pacifico_MISFinalProject.png'
+import lanyard from '../assets/social media posts/lanyard.png'
+import websiteUi1 from '../assets/website ui/services.png'
+import techwear from '../assets/website ui/techwear.png'
+import brandTypography1 from '../assets/branding/brand_typography1.PNG'
+import brandTypography2 from '../assets/branding/brand_typography2.PNG'
+import brandMockup from '../assets/branding/brand_mockup.webp'
+import google from '../assets/social media posts/GOOGLE.webp'
+import mlbb from '../assets/social media posts/MLBB.webp'
 
 interface GraphicsSectionProps {
   onOpenDeviceModal?: (d: { src: string; title: string; desc: string }) => void
 }
 
+export type GraphicsCategory = 'All' | 'Logo' | 'Social Media' | 'Website UI' | 'Posters' | 'Branding'
+
+const categories: GraphicsCategory[] = ['All', 'Logo', 'Social Media', 'Website UI', 'Posters', 'Branding']
+
+const graphics = [
+  { src: banner00, title: 'Fresh Safe Banner', desc: 'Organic produce promotional banner design.', category: 'Social Media' as GraphicsCategory },
+  { src: artboard1, title: 'Brand Logo', desc: 'Brand logo I designed for a vegan restaurant.', category: 'Logo' as GraphicsCategory },
+  { src: lanyard, title: 'Lanyard Design', desc: 'My own version design of our school lanyard.', category: 'Social Media' as GraphicsCategory },
+  { src: harvest, title: 'Harvest Festival', desc: 'Event poster for a local harvest celebration.', category: 'Posters' as GraphicsCategory },
+  { src: frameBahalaNani, title: 'Organization Frame', desc: 'Frame I designed for a school organization.', category: 'Social Media' as GraphicsCategory },
+  { src: practice, title: 'Practice Design', desc: 'Practice graphic design piece.', category: 'Posters' as GraphicsCategory },
+  { src: misProject, title: 'MIS Final Project', desc: 'Comprehensive branding and UI design for a management system.', category: 'Posters' as GraphicsCategory },
+  { src: lambo, title: 'Lambo Poster', desc: 'Modern poster design featuring luxury automotive aesthetics.', category: 'Posters' as GraphicsCategory },
+  { src: liquid, title: 'Liquid Poster', desc: 'Abstract fluid art poster with dynamic visual effects.', category: 'Posters' as GraphicsCategory },
+  { src: poster, title: 'Favorite Cartoon Poster', desc: 'Bold and vibrant poster with striking typography.', category: 'Posters' as GraphicsCategory },
+  { src: v3, title: 'V3 Design', desc: 'Version 3 concept design with modern aesthetics.', category: 'Posters' as GraphicsCategory },
+  { src: brandTypography1, title: 'Brand Typography 1', desc: 'Typography exploration for a brand identity.', category: 'Branding' as GraphicsCategory },
+  { src: brandTypography2, title: 'Brand Typography 2', desc: 'Typography exploration for a brand identity.', category: 'Branding' as GraphicsCategory },
+  { src: brandMockup, title: 'Brand Mockup', desc: 'Mockup showcasing the brand identity in context.', category: 'Branding' as GraphicsCategory },
+  { src: websiteUi1, title: 'Website UI Design', desc: 'Modern website interface design.', category: 'Website UI' as GraphicsCategory },
+  { src: techwear, title: 'Techwear Website UI', desc: 'E-commerce website interface for a techwear brand.', category: 'Website UI' as GraphicsCategory },
+  { src: google, title: 'Google Gemini', desc: 'Social media post design featuring Google workshop.', category: 'Social Media' as GraphicsCategory },
+  { src: mlbb, title: 'MLBB Tournament', desc: 'Social media post design featuring a Mobile Legends.', category: 'Social Media' as GraphicsCategory },
+]
+
 export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionProps) {
-  const graphics = [
-    { src: banner00, title: 'Fresh Safe Banner', desc: 'Organic produce promotional banner design.' },
-    { src: artboard1, title: 'Brand Logo', desc: 'Brand logo I designed for a vegan restaurant.' },
-    { src: lanyard, title: 'Lanyard Design', desc: 'My own version design of our school lanyard.' },
-    { src: harvest, title: 'Harvest Festival', desc: 'Event poster for a local harvest celebration.' },
-    { src: frameBahalaNani, title: 'Organization Frame', desc: 'Frame I designed for a school organization.' },
-    { src: practice, title: 'Practice Design', desc: 'Practice graphic design piece.' },
-    { src: misProject, title: 'MIS Final Project', desc: 'Comprehensive branding and UI design for a management system.' },
-    { src: lambo, title: 'Lambo Poster', desc: 'Modern poster design featuring luxury automotive aesthetics.' },
-    { src: liquid, title: 'Liquid Poster', desc: 'Abstract fluid art poster with dynamic visual effects.' },
-    { src: poster, title: 'Favorite Cartoon Poster', desc: 'Bold and vibrant poster with striking typography.' },
-    { src: v3, title: 'V3 Design', desc: 'Version 3 concept design with modern aesthetics.' }
-  ]
+  const [activeCategory, setActiveCategory] = useState<GraphicsCategory>('All')
+
+  const filtered = useMemo(
+    () => (activeCategory === 'All' ? graphics : graphics.filter((item) => item.category === activeCategory)),
+    [activeCategory]
+  )
 
   return (
     <section id="graphics" className="mt-14 py-12">
       <div className="mx-auto max-w-5xl">
-        <div className="flex flex-col items-center text-center mb-10">
-          <motion.h2 
+        <div className="flex flex-col items-center text-center mb-8">
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-3xl font-bold tracking-tight sm:text-4xl text-neutral-900 dark:text-white">Graphics Portfolio</motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -50,42 +77,66 @@ export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionPr
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 h-auto md:h-[900px]">
-          {graphics.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              onClick={() => onOpenDeviceModal?.({ src: item.src, title: item.title, desc: item.desc })}
-              className={`group relative overflow-hidden rounded-2xl cursor-pointer bg-neutral-100 dark:bg-neutral-800 ${
-                i === 0 ? 'md:col-span-2 md:row-span-2' : 
-                i === 3 ? 'md:col-span-2 md:row-span-2' : 
-                'md:col-span-1 md:row-span-1'
+        <div className="mb-8 flex flex-wrap justify-center gap-2">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                activeCategory === category
+                  ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
+                  : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700'
               }`}
             >
-              <ImageWithSkeleton
-                src={item.src}
-                alt={item.title}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                containerClassName="h-full w-full"
-                loading="lazy"
-              />
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-6">
-                <motion.h3 
-                  className="text-white font-bold text-lg transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
-                  {item.title}
-                </motion.h3>
-                <motion.p 
-                  className="text-white/80 text-sm mt-2 transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 delay-75">
-                  {item.desc}
-                </motion.p>
-              </div>
-            </motion.div>
+              {category}
+            </button>
           ))}
+        </div>
+
+        <div className={`grid grid-cols-1 gap-4 ${activeCategory === 'All' ? 'md:grid-cols-4' : 'md:grid-cols-3'}`}>
+          {filtered.length === 0 ? (
+            <EmptyState
+              title={`No ${activeCategory === 'All' ? '' : activeCategory} items yet`}
+              description={`There are currently no designs in the ${activeCategory.toLowerCase()} category.`}
+            />
+          ) : (
+            filtered.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                onClick={() => onOpenDeviceModal?.({ src: item.src, title: item.title, desc: item.desc })}
+                className={`group relative overflow-hidden rounded-2xl cursor-pointer bg-neutral-100 dark:bg-neutral-800 ${
+                  activeCategory === 'All'
+                    ? i === 0 || i === 3
+                      ? 'md:col-span-2 md:row-span-2'
+                      : 'md:col-span-1 md:row-span-1'
+                    : 'md:col-span-1 md:row-span-1'
+                }`}
+              >
+                <ImageWithSkeleton
+                  src={item.src}
+                  alt={item.title}
+                  className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-110"
+                  containerClassName="h-full w-full"
+                  loading="lazy"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-6">
+                  <motion.h3
+                    className="text-white font-bold text-lg transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
+                    {item.title}
+                  </motion.h3>
+                  <motion.p
+                    className="text-white/80 text-sm mt-2 transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 delay-75">
+                    {item.desc}
+                  </motion.p>
+                </div>
+              </motion.div>
+            ))
+          )}
         </div>
       </div>
     </section>
