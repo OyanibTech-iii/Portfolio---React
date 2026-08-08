@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { FaGithub, FaBehance } from 'react-icons/fa'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, Cell, LabelList } from 'recharts'
 import { ProgressBarCircle } from "@/components/base/progress-indicators/progress-circles"
 import profileImg from '../assets/blackprofile.png'
@@ -32,7 +33,7 @@ const focusData = [
   { name: 'Symfony', value: 74 },
   { name: 'Docker', value: 37 },
   { name: 'Laravel', value: 23 },
-  { name: 'NextJS React', value: 77 },
+  { name: 'NextJS React', value: 42.6 },
   { name: 'Python', value: 38 },
 ];
 
@@ -69,6 +70,27 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
             loading="lazy"
           />
           
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="https://www.behance.net/pacificooyanibcreate"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-200 hover:text-neutral-900 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white"
+            >
+              <FaBehance className="h-4 w-4" />
+              pacificooyanibcreate
+            </a>
+            <a
+              href="https://github.com/OyanibTech-iii"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-200 hover:text-neutral-900 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white"
+            >
+              <FaGithub className="h-4 w-4" />
+              OyanibTech-iii
+            </a>
+          </div>
+
           <div className="h-64 w-full ">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart cx="50%" cy="50%" outerRadius="70%" data={skillData}>

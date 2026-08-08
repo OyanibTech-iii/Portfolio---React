@@ -2,7 +2,10 @@ import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ImageWithSkeleton } from './ui/image-with-skeleton'
 import { EmptyState } from './ui/empty-state'
-import artboard1 from '../assets/logo/Artboard 1.png'
+import artboard1 from '../assets/branding/Artboard 1.png'
+import branding from '../assets/branding/branding.png'
+import coloredLogo from '../assets/logo/colored logo.png'
+import logoLayout from '../assets/logo/logo_layout.png'
 import banner00 from '../assets/social media posts/banner 00.png'
 import frameBahalaNani from '../assets/social media posts/Frame Bahala nani.png'
 import poster from '../assets/posters/POSTER.png'
@@ -15,8 +18,8 @@ import misProject from '../assets/posters/Oyanib_Pacifico_MISFinalProject.png'
 import lanyard from '../assets/social media posts/lanyard.png'
 import websiteUi1 from '../assets/website ui/services.png'
 import techwear from '../assets/website ui/techwear.png'
-import brandTypography1 from '../assets/branding/brand_typography1.PNG'
-import brandTypography2 from '../assets/branding/brand_typography2.PNG'
+import brandTypography1 from '../assets/branding/brand_typography1.png'
+import brandTypography2 from '../assets/branding/brand_typography2.png'
 import brandMockup from '../assets/branding/brand_mockup.webp'
 import google from '../assets/social media posts/GOOGLE.webp'
 import mlbb from '../assets/social media posts/MLBB.webp'
@@ -31,7 +34,10 @@ const categories: GraphicsCategory[] = ['All', 'Logo', 'Social Media', 'Website 
 
 const graphics = [
   { src: banner00, title: 'Fresh Safe Banner', desc: 'Organic produce promotional banner design.', category: 'Social Media' as GraphicsCategory },
-  { src: artboard1, title: 'Brand Logo', desc: 'Brand logo I designed for a vegan restaurant.', category: 'Logo' as GraphicsCategory },
+  { src: artboard1, title: 'Brand Logo', desc: 'Brand logo I designed for a vegan restaurant.', category: 'Branding' as GraphicsCategory },
+  { src: coloredLogo, title: 'Colored Logo', desc: 'Full-color logo mark with its complete identity.', category: 'Logo' as GraphicsCategory },
+  { src: logoLayout, title: 'Logo Layout', desc: 'Logo layout guide with variations and specifications.', category: 'Logo' as GraphicsCategory },
+  { src: branding, title: 'Brand Identity', desc: 'Complete brand identity system and application.', category: 'Branding' as GraphicsCategory },
   { src: lanyard, title: 'Lanyard Design', desc: 'My own version design of our school lanyard.', category: 'Social Media' as GraphicsCategory },
   { src: harvest, title: 'Harvest Festival', desc: 'Event poster for a local harvest celebration.', category: 'Posters' as GraphicsCategory },
   { src: frameBahalaNani, title: 'Organization Frame', desc: 'Frame I designed for a school organization.', category: 'Social Media' as GraphicsCategory },
