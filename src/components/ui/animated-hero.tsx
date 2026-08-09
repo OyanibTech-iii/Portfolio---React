@@ -53,9 +53,18 @@ function Hero() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center my-6">
-              Versatile software developer and network specialist dedicated to building robust applications and seamless digital solutions. Explore my projects spanning across multiple platforms and technologies.
+<p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center my-6">
+              Crafting intuitive UI/UX and polished frontends that turn ideas into delightful, high-performance experiences — backed by dependable full-stack and networking expertise. Let&apos;s build something elegant together.
             </p>
+
+            <div className="flex justify-center">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-full border border-shamrock-500 px-6 py-2.5 text-sm font-medium text-shamrock-600 transition-colors duration-300 hover:bg-shamrock-500 hover:text-white dark:text-shamrock-400 dark:hover:text-white dark:hover:bg-shamrock-500"
+              >
+                Let&apos;s Work Together
+              </a>
+            </div>
           </div>
 
           <div className="mt-12 flex w-full max-w-full flex-col items-center gap-6 px-4">

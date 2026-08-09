@@ -146,7 +146,7 @@ export const AnimatedThemeToggle = ({ className }: { className?: string }) => {
       >
         <div className="flex items-center gap-2">
           {getThemeIcon()}
-          <span className="text-xs font-medium hidden sm:inline-block transition-colors duration-300" style={{ color: getThemeIconClass() }}>
+          <span className="text-xs font-medium hidden md:inline-block transition-colors duration-300" style={{ color: getThemeIconClass() }}>
             {getThemeLabel()}
           </span>
         </div>
@@ -198,7 +198,7 @@ export const AnimatedThemeToggle = ({ className }: { className?: string }) => {
         >
           <div className="flex items-center gap-2">
             {getThemeIcon()}
-            <span className="text-xs font-medium hidden sm:inline-block transition-colors duration-300" style={{ color: getThemeIconClass() }}>
+            <span className="text-xs font-medium hidden md:inline-block transition-colors duration-300" style={{ color: getThemeIconClass() }}>
               {getThemeLabel()}
             </span>
           </div>

@@ -172,6 +172,7 @@ export default function WorkshopsSection() {
                                 className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                 containerClassName="h-full w-full"
                                 loading="lazy"
+                                decoding="async"
                               />
                             </motion.figure>
                           ))}

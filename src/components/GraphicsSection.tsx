@@ -23,6 +23,7 @@ import brandTypography2 from '../assets/branding/brand_typography2.png'
 import brandMockup from '../assets/branding/brand_mockup.webp'
 import google from '../assets/social media posts/GOOGLE.webp'
 import mlbb from '../assets/social media posts/MLBB.webp'
+import fashion from '../assets/graphics2/fashion.webp'
 
 interface GraphicsSectionProps {
   onOpenDeviceModal?: (d: { src: string; title: string; desc: string }) => void
@@ -54,6 +55,7 @@ const graphics = [
   { src: techwear, title: 'Techwear Website UI', desc: 'E-commerce website interface for a techwear brand.', category: 'Website UI' as GraphicsCategory },
   { src: google, title: 'Google Gemini', desc: 'Social media post design featuring Google workshop.', category: 'Social Media' as GraphicsCategory },
   { src: mlbb, title: 'MLBB Tournament', desc: 'Social media post design featuring a Mobile Legends.', category: 'Social Media' as GraphicsCategory },
+  { src: fashion, title: 'Fashion Design', desc: 'Stylish fashion graphic design with a modern aesthetic.', category: 'Posters' as GraphicsCategory },
 ]
 
 export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionProps) {
