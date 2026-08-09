@@ -6,6 +6,8 @@ import artboard1 from '../assets/branding/Artboard 1.png'
 import branding from '../assets/branding/branding.png'
 import coloredLogo from '../assets/logo/colored logo.png'
 import logoLayout from '../assets/logo/logo_layout.png'
+import laptopbagBalance from '../assets/logo/laptopbag logo balance.png'
+import laptopbagSketch from '../assets/logo/laptopbag sketch logo.png'
 import banner00 from '../assets/social media posts/banner 00.png'
 import frameBahalaNani from '../assets/social media posts/Frame Bahala nani.png'
 import poster from '../assets/posters/POSTER.png'
@@ -21,6 +23,7 @@ import techwear from '../assets/website ui/techwear.png'
 import brandTypography1 from '../assets/branding/brand_typography1.png'
 import brandTypography2 from '../assets/branding/brand_typography2.png'
 import brandMockup from '../assets/branding/brand_mockup.webp'
+import laptopBagBrand from '../assets/branding/laptop bag brand.png'
 import google from '../assets/social media posts/GOOGLE.webp'
 import mlbb from '../assets/social media posts/MLBB.webp'
 import fashion from '../assets/graphics2/fashion.webp'
@@ -38,6 +41,8 @@ const graphics = [
   { src: artboard1, title: 'Brand Logo', desc: 'Brand logo I designed for a vegan restaurant.', category: 'Branding' as GraphicsCategory },
   { src: coloredLogo, title: 'Colored Logo', desc: 'Full-color logo mark with its complete identity.', category: 'Logo' as GraphicsCategory },
   { src: logoLayout, title: 'Logo Layout', desc: 'Logo layout guide with variations and specifications.', category: 'Logo' as GraphicsCategory },
+  { src: laptopbagSketch, title: 'Laptopbag Sketch Logo', desc: 'Concept sketch logo design for a laptop bag brand.', category: 'Logo' as GraphicsCategory },
+  { src: laptopbagBalance, title: 'Laptopbag Logo', desc: 'Balanced logo design for a laptop bag brand.', category: 'Logo' as GraphicsCategory },
   { src: branding, title: 'Brand Identity', desc: 'Complete brand identity system and application.', category: 'Branding' as GraphicsCategory },
   { src: lanyard, title: 'Lanyard Design', desc: 'My own version design of our school lanyard.', category: 'Social Media' as GraphicsCategory },
   { src: harvest, title: 'Harvest Festival', desc: 'Event poster for a local harvest celebration.', category: 'Posters' as GraphicsCategory },
@@ -51,6 +56,7 @@ const graphics = [
   { src: brandTypography1, title: 'Brand Typography 1', desc: 'Typography exploration for a brand identity.', category: 'Branding' as GraphicsCategory },
   { src: brandTypography2, title: 'Brand Typography 2', desc: 'Typography exploration for a brand identity.', category: 'Branding' as GraphicsCategory },
   { src: brandMockup, title: 'Brand Mockup', desc: 'Mockup showcasing the brand identity in context.', category: 'Branding' as GraphicsCategory },
+  { src: laptopBagBrand, title: 'Laptop Bag Brand', desc: 'Complete brand application for the laptop bag line.', category: 'Branding' as GraphicsCategory },
   { src: websiteUi1, title: 'Website UI Design', desc: 'Modern website interface design.', category: 'Website UI' as GraphicsCategory },
   { src: techwear, title: 'Techwear Website UI', desc: 'E-commerce website interface for a techwear brand.', category: 'Website UI' as GraphicsCategory },
   { src: google, title: 'Google Gemini', desc: 'Social media post design featuring Google workshop.', category: 'Social Media' as GraphicsCategory },
