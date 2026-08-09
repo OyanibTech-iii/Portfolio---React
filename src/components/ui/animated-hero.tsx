@@ -78,7 +78,7 @@ function Hero() {
               <DockIcon name="Photoshop" href="#graphics" src="https://svgl.app/library/photoshop.svg" />
               <DockIcon name="Illustrator" href="#graphics" src="https://svgl.app/library/illustrator.svg" />
               <DockIcon name="Photopea" href="#graphics" src="https://cdn.simpleicons.org/photopea" />
-              <DockIcon name="Figma" href="#graphics" src="https://cdn.simpleicons.org/figma" />
+              {/*<DockIcon name="Affinity" href="#graphics" src="https://unpkg.com/simple-icons@latest/icons/affinity.svg" />*/}
             </Dock>
           </div>
         </div>
