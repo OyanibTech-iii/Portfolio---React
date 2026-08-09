@@ -77,9 +77,8 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
               radius={18}
               tintOpacity={0}
               blur={0}
-              textColor="#f5f5f5"
               lineColor="#ffffff"
-              baseColor="#1769ff"
+              baseColor="#71717a"
               intensity={1}
               shineSize={12}
               shineFade={40}
@@ -99,7 +98,6 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
               radius={18}
               tintOpacity={0}
               blur={0}
-              textColor="#f5f5f5"
               lineColor="#ffffff"
               baseColor="#24292f"
               intensity={1}

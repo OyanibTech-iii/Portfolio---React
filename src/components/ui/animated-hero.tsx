@@ -65,9 +65,8 @@ function Hero() {
                 tint="#ffffff"
                 tintOpacity={0}
                 blur={0}
-                textColor="#f5f5f5"
                 lineColor="#ffffff"
-                baseColor="#10b981"
+                baseColor="#71717a"
                 intensity={1}
                 shineSize={14}
                 shineFade={45}

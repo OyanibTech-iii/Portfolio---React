@@ -3,6 +3,7 @@ import {
   Loader2, 
 } from 'lucide-react'
 import { Facebook, GitHub as Github, Mail } from 'react-feather'
+import SpecularButton from "@/components/SpecularButton"
 
 interface ContactSectionProps {
   formData: { name: string; email: string; message: string }
@@ -227,24 +228,35 @@ export default function ContactSection({
                 </AnimatePresence>
 
                 {/* Submit Button */}
-                <motion.button
+                <SpecularButton
                   type="submit"
+                  size="lg"
+                  radius={16}
+                  tintOpacity={0}
+                  blur={0}
+                  lineColor="#ffffff"
+                  baseColor="#71717a"
+                  intensity={1}
+                  shineSize={14}
+                  shineFade={45}
+                  thickness={1.5}
+                  followMouse
+                  proximity={250}
+                  autoAnimate={false}
                   disabled={formStatus === 'loading' || cooldown > 0}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full relative group overflow-hidden py-5 rounded-2xl bg-shamrock-500 text-white font-bold flex items-center justify-center gap-2 transition-all hover:bg-shamrock-600 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full"
                 >
                   {formStatus === 'loading' ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>Sending...</span>
-                    </>
+                    <span className="inline-flex items-center gap-2">
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                      Sending...
+                    </span>
                   ) : cooldown > 0 ? (
                     <span>Wait {cooldown}s</span>
                   ) : (
                     <span>Send Message</span>
                   )}
-                </motion.button>
+                </SpecularButton>
               </form>
             </motion.div>
           </div>

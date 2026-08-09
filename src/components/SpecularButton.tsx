@@ -99,7 +99,7 @@ const SpecularButton = ({
   tint = '#ffffff',
   tintOpacity = 0,
   blur = 0,
-  textColor = '#f5f5f5',
+  textColor = '',
   lineColor = '#ffffff',
   baseColor = '#525252',
   intensity = 1,
@@ -259,7 +259,7 @@ const SpecularButton = ({
         '--sb-tint': tint,
         '--sb-tint-opacity': tintOpacity,
         '--sb-blur': `${blur}px`,
-        '--sb-text-color': textColor
+        ...(textColor ? { '--sb-text-color': textColor } : {})
       } as CSSProperties}
     >
       <span ref={fxRef} className="specular-button__fx" aria-hidden="true" />
