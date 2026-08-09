@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { FaGithub, FaBehance } from 'react-icons/fa'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, Cell, LabelList } from 'recharts'
 import { ProgressBarCircle } from "@/components/base/progress-indicators/progress-circles"
+import SpecularButton from "@/components/SpecularButton"
 import profileImg from '../assets/blackprofile.png'
 
 import certImg from '../assets/e-cert.png'
@@ -71,24 +72,50 @@ export default function AboutSection({ onOpenCertModal }: AboutSectionProps) {
           />
           
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="https://www.behance.net/pacificooyanibcreate"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-200 hover:text-neutral-900 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white"
+            <SpecularButton
+              size="sm"
+              radius={18}
+              tintOpacity={0}
+              blur={0}
+              textColor="#f5f5f5"
+              lineColor="#ffffff"
+              baseColor="#1769ff"
+              intensity={1}
+              shineSize={12}
+              shineFade={40}
+              thickness={1}
+              followMouse
+              proximity={250}
+              autoAnimate={false}
+              onClick={() => window.open('https://www.behance.net/pacificooyanibcreate', '_blank', 'noreferrer')}
             >
-              <FaBehance className="h-4 w-4" />
-              pacificooyanibcreate
-            </a>
-            <a
-              href="https://github.com/OyanibTech-iii"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-200 hover:text-neutral-900 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white"
+              <span className="inline-flex items-center gap-2">
+                <FaBehance className="h-4 w-4" />
+                pacificooyanibcreate
+              </span>
+            </SpecularButton>
+            <SpecularButton
+              size="sm"
+              radius={18}
+              tintOpacity={0}
+              blur={0}
+              textColor="#f5f5f5"
+              lineColor="#ffffff"
+              baseColor="#24292f"
+              intensity={1}
+              shineSize={12}
+              shineFade={40}
+              thickness={1}
+              followMouse
+              proximity={250}
+              autoAnimate={false}
+              onClick={() => window.open('https://github.com/OyanibTech-iii', '_blank', 'noreferrer')}
             >
-              <FaGithub className="h-4 w-4" />
-              OyanibTech-iii
-            </a>
+              <span className="inline-flex items-center gap-2">
+                <FaGithub className="h-4 w-4" />
+                OyanibTech-iii
+              </span>
+            </SpecularButton>
           </div>
 
           <div className="h-64 w-full ">

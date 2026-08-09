@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Dock, DockIcon } from "@/components/ui/dock";
+import SpecularButton from "@/components/SpecularButton";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -57,13 +58,30 @@ function Hero() {
               Crafting intuitive UI/UX and polished frontends that turn ideas into delightful, high-performance experiences — backed by dependable full-stack and networking expertise. Let&apos;s build something elegant together.
             </p>
 
-            <div className="flex justify-center">
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center rounded-full border border-shamrock-500 px-6 py-2.5 text-sm font-medium text-shamrock-600 transition-colors duration-300 hover:bg-shamrock-500 hover:text-white dark:text-shamrock-400 dark:hover:text-white dark:hover:bg-shamrock-500"
+<div className="flex justify-center">
+              <SpecularButton
+                size="lg"
+                radius={14}
+                tint="#ffffff"
+                tintOpacity={0}
+                blur={0}
+                textColor="#f5f5f5"
+                lineColor="#ffffff"
+                baseColor="#10b981"
+                intensity={1}
+                shineSize={14}
+                shineFade={45}
+                thickness={1.5}
+                speed={0.35}
+                followMouse
+                proximity={250}
+                autoAnimate={false}
+                onClick={() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                }}
               >
                 Let&apos;s Work Together
-              </a>
+              </SpecularButton>
             </div>
           </div>
 
