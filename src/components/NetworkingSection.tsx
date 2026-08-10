@@ -1,5 +1,6 @@
-import { motion, type Variants } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { useState } from 'react'
+import { motion, AnimatePresence, type Variants } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import multilayerSwitch from '../assets/multilayer-switch.png'
 import routerImg from '../assets/router.png'
 
@@ -22,22 +23,51 @@ const itemVariants: Variants = {
   }
 }
 
-interface NetworkingSectionProps {
-  onOpenDeviceModal: (device: { src: string; title: string; desc: string }) => void
-}
-
-export default function NetworkingSection({ onOpenDeviceModal }: NetworkingSectionProps) {
-  const fundamentals = [
-    { title: 'OSI Model', desc: '7 layers of network communication from Physical to Application.' },
-    { title: 'TCP/IP Model', desc: 'The backbone of the modern internet architecture.' },
-    { title: 'TCP vs UDP', desc: 'Reliable connection-based vs fast connectionless transport.' },
-    { title: 'LAN vs WAN', desc: 'Local area networks versus wide area connectivity.' },
-    { title: 'Architecture', desc: 'Client-Server and Peer-to-Peer distribution models.' },
+const devices = [
+    {
+      id: 'switch',
+      title: 'Multilayer Switch',
+      desc: 'Layer 2/3 switch for VLANs, switching, and routing.',
+      sample: multilayerSwitch,
+      config: [
+        'Switch(config)# vlan 10',
+        'Switch(config-vlan)# name USERS',
+        'Switch(config)# interface g0/1',
+        'Switch(config-if)# switchport mode access',
+        'Switch(config-if)# switchport access vlan 10',
+        'Switch(config)# interface vlan 10',
+        'Switch(config-if)# ip address 192.168.10.1 255.255.255.0',
+        'Switch(config-if)# no shutdown',
+      ],
+    },
+    {
+      id: 'router',
+      title: 'Network Router',
+      desc: 'Directs traffic between networks using intelligent protocols.',
+      sample: routerImg,
+      config: [
+        'Router(config)# interface g0/0',
+        'Router(config-if)# ip address 192.168.10.254 255.255.255.0',
+        'Router(config-if)# no shutdown',
+        'Router(config)# interface g0/1',
+        'Router(config-if)# ip address 203.0.113.1 255.255.255.0',
+        'Router(config)# ip route 0.0.0.0 0.0.0.0 203.0.113.254',
+        'Router(config)# ip dhcp pool LAN',
+        'Router(dhcp-config)# network 192.168.10.0 255.255.255.0',
+      ],
+    }
   ]
 
-  const devices = [
-    { src: multilayerSwitch, title: 'Multilayer Switch', desc: 'Layer 2/3 switch for VLANs, switching, and routing.' },
-    { src: routerImg, title: 'Network Router', desc: 'Directs traffic between networks using intelligent protocols.' }
+export default function NetworkingSection() {
+  const [openDevice, setOpenDevice] = useState<string | null>(null)
+  const [openFundamental, setOpenFundamental] = useState<string | null>(null)
+
+  const fundamentals = [
+    { title: 'OSI Model', desc: '7 layers of network communication from Physical to Application.', details: ['Physical', 'Data Link', 'Network', 'Transport', 'Session', 'Presentation', 'Application'] },
+    { title: 'TCP/IP Model', desc: 'The backbone of the modern internet architecture.', details: ['Link', 'Internet', 'Transport', 'Application'] },
+    { title: 'TCP vs UDP', desc: 'Reliable connection-based vs fast connectionless transport.', details: ['TCP: connection-oriented, ordered, retransmission', 'UDP: connectionless, low overhead, real-time'] },
+    { title: 'LAN vs WAN', desc: 'Local area networks versus wide area connectivity.', details: ['LAN: campus/office scope, high speed', 'WAN: connects sites across a wide area'] },
+    { title: 'Architecture', desc: 'Client-Server and Peer-to-Peer distribution models.', details: ['Client-Server: centralized, scalable', 'Peer-to-Peer: decentralized, no central server'] },
   ]
 
   const ipAddressing = [
@@ -95,20 +125,60 @@ export default function NetworkingSection({ onOpenDeviceModal }: NetworkingSecti
                 Network Fundamentals
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {fundamentals.map((item, i) => (
-                  <motion.div
-                    key={i}
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.02, translateY: -5 }}
-                    className="group relative p-5 rounded-2xl border border-neutral-200/60 bg-white/50 dark:border-neutral-800/60 dark:bg-neutral-900/40 backdrop-blur-md overflow-hidden transition-all duration-300"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-shamrock-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="relative">
-                      <h4 className="font-semibold text-neutral-900 dark:text-neutral-100">{item.title}</h4>
-                      <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">{item.desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
+                {fundamentals.map((item) => {
+                  const isOpen = openFundamental === item.title
+                  return (
+                    <motion.div
+                      key={item.title}
+                      variants={itemVariants}
+                      className={`group rounded-2xl border transition-colors duration-300 overflow-hidden ${
+                        isOpen
+                          ? 'border-shamrock-500/40 dark:border-shamrock-500/40'
+                          : 'border-neutral-200/60 dark:border-neutral-800/60'
+                      } bg-white/50 dark:bg-neutral-900/40 backdrop-blur-md`}
+                    >
+                      <button
+                        onClick={() => setOpenFundamental(isOpen ? null : item.title)}
+                        className="w-full flex items-center justify-between gap-3 p-5 text-left"
+                        aria-expanded={isOpen}
+                      >
+                        <div className="relative">
+                          <h4 className="font-semibold text-neutral-900 dark:text-neutral-100">{item.title}</h4>
+                          <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">{item.desc}</p>
+                        </div>
+                        <ChevronDown
+                          className={`h-4 w-4 shrink-0 transition-transform duration-300 text-neutral-500 dark:text-neutral-400 ${
+                            isOpen ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                            className="overflow-hidden"
+                          >
+                            <ul className="px-5 pb-5 space-y-2">
+                              {item.details.map((detail, d) => (
+                                <li
+                                  key={d}
+                                  className="flex items-start gap-2 text-sm font-medium text-neutral-700 dark:text-neutral-300"
+                                >
+                                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-shamrock-500" />
+                                  {detail}
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  )
+                })}
               </div>
             </motion.div>
 
@@ -173,32 +243,71 @@ export default function NetworkingSection({ onOpenDeviceModal }: NetworkingSecti
                 Hardware
               </h3>
               <div className="space-y-4">
-                {devices.map((device, i) => (
-                  <motion.div 
-                    key={i}
-                    whileHover={{ y: -5 }}
-                    className="group relative overflow-hidden rounded-2xl border border-neutral-200/70 bg-white/60 dark:border-neutral-800/70 dark:bg-neutral-900/50 shadow-sm"
-                  >
-                    <div className="h-32 w-full overflow-hidden">
-                      <img 
-                        src={device.src} 
-                        alt={device.title} 
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <h4 className="font-semibold text-neutral-900 dark:text-neutral-100">{device.title}</h4>
-                      <p className="mt-1 text-xs text-neutral-600 dark:text-neutral-400">{device.desc}</p>
+                {devices.map((device) => {
+                  const isOpen = openDevice === device.id
+                  return (
+                    <div
+                      key={device.id}
+                      className={`overflow-hidden rounded-2xl border transition-colors duration-300 ${
+                        isOpen
+                          ? 'border-shamrock-500/40 dark:border-shamrock-500/40'
+                          : 'border-neutral-200/70 dark:border-neutral-800/70'
+                      } bg-white/60 dark:bg-neutral-900/50 shadow-sm`}
+                    >
                       <button
-                        onClick={() => onOpenDeviceModal(device)}
-                        className="mt-3 flex items-center gap-1.5 text-xs font-bold text-shamrock-600 dark:text-shamrock-400 hover:text-shamrock-700 dark:hover:text-shamrock-300 transition-colors"
+                        onClick={() => setOpenDevice(isOpen ? null : device.id)}
+                        className="w-full flex items-center justify-between gap-3 p-4 text-left"
+                        aria-expanded={isOpen}
                       >
-                        Technical Specs <ArrowRight className="w-3 h-3" />
+                        <div>
+                          <h4 className="font-semibold text-neutral-900 dark:text-neutral-100">{device.title}</h4>
+                          <p className="mt-1 text-xs text-neutral-600 dark:text-neutral-400">{device.desc}</p>
+                        </div>
+                        <ChevronDown
+                          className={`h-4 w-4 shrink-0 transition-transform duration-300 text-neutral-500 dark:text-neutral-400 ${
+                            isOpen ? 'rotate-180' : ''
+                          }`}
+                        />
                       </button>
+
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-4 pb-4 space-y-3">
+                              <div className="rounded-lg border border-neutral-200/70 bg-white/60 p-2 dark:border-neutral-800 dark:bg-neutral-900/40">
+                                <p className="mb-2 px-1 text-[10px] font-bold uppercase tracking-widest text-shamrock-500 dark:text-shamrock-400">
+                                  Sample Configuration
+                                </p>
+                                <img
+                                  src={device.sample}
+                                  alt={`${device.title} sample configuration`}
+                                  className="w-full rounded-md object-cover"
+                                  loading="lazy"
+                                />
+                              </div>
+                              <div className="rounded-lg border border-neutral-200/70 bg-white p-3 text-[11px] leading-relaxed dark:border-neutral-800 dark:bg-neutral-900 overflow-x-auto">
+                                <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-shamrock-500 dark:text-shamrock-400">
+                                  Configuration
+                                </p>
+                                {device.config.map((line, i) => (
+                                  <code key={i} className="block font-mono text-neutral-700 whitespace-nowrap dark:text-neutral-300">
+                                    {line}
+                                  </code>
+                                ))}
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
-                  </motion.div>
-                ))}
+                  )
+                })}
               </div>
             </motion.div>
 

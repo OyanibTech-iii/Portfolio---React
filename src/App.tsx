@@ -204,7 +204,7 @@ function Portfolio() {
         <ReactNativeAppsSection onOpenDownloadModal={openDownloadModal} />
         <JavaAppsSection onOpenDownloadModal={openDownloadModal} />
         <PythonAppsSection onOpenDownloadModal={openDownloadModal} />
-        <NetworkingSection onOpenDeviceModal={openDeviceModal} />
+        <NetworkingSection />
         <ContactSection
           formData={formData}
           formStatus={formStatus}
