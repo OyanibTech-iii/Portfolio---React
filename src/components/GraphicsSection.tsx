@@ -17,6 +17,7 @@ import v3 from '../assets/posters/v3.png'
 import harvest from '../assets/posters/harvest.png'
 import practice from '../assets/posters/practice.png'
 import misProject from '../assets/posters/Oyanib_Pacifico_MISFinalProject.png'
+import paranoid from '../assets/posters/PARANOID.png'
 import lanyard from '../assets/social media posts/lanyard.png'
 import websiteUi1 from '../assets/website ui/services.png'
 import techwear from '../assets/website ui/techwear.png'
@@ -61,6 +62,7 @@ const graphics = [
   { src: techwear, title: 'Techwear Website UI', desc: 'E-commerce website interface for a techwear brand.', category: 'Website UI' as GraphicsCategory },
   { src: google, title: 'Google Gemini', desc: 'Social media post design featuring Google workshop.', category: 'Social Media' as GraphicsCategory },
   { src: mlbb, title: 'MLBB Tournament', desc: 'Social media post design featuring a Mobile Legends.', category: 'Social Media' as GraphicsCategory },
+  { src: paranoid, title: 'PARANOID', desc: 'Bold poster design with striking paranoid theme and typography.', category: 'Posters' as GraphicsCategory },
   { src: fashion, title: 'Fashion Design', desc: 'Stylish fashion graphic design with a modern aesthetic.', category: 'Posters' as GraphicsCategory },
 ]
 
