@@ -18,6 +18,8 @@ import harvest from '../assets/posters/harvest.png'
 import practice from '../assets/posters/practice.png'
 import misProject from '../assets/posters/Oyanib_Pacifico_MISFinalProject.png'
 import paranoid from '../assets/posters/PARANOID.png'
+import pancit from '../assets/posters/pancit.png'
+import ramen from '../assets/posters/ramen.png'
 import lanyard from '../assets/social media posts/lanyard.png'
 import websiteUi1 from '../assets/website ui/services.png'
 import techwear from '../assets/website ui/techwear.png'
@@ -54,6 +56,8 @@ const graphics = [
   { src: liquid, title: 'Liquid Poster', desc: 'Abstract fluid art poster with dynamic visual effects.', category: 'Posters' as GraphicsCategory },
   { src: poster, title: 'Favorite Cartoon Poster', desc: 'Bold and vibrant poster with striking typography.', category: 'Posters' as GraphicsCategory },
   { src: v3, title: 'V3 Design', desc: 'Version 3 concept design with modern aesthetics.', category: 'Posters' as GraphicsCategory },
+  { src: pancit, title: 'Pancit Poster', desc: 'Creative poster design showcasing Filipino Pancit Canton.', category: 'Posters' as GraphicsCategory },
+  { src: ramen, title: 'Ramen Poster', desc: 'Japanese ramen illustration poster design.', category: 'Posters' as GraphicsCategory },
   { src: brandTypography1, title: 'Brand Typography 1', desc: 'Typography exploration for a brand identity.', category: 'Branding' as GraphicsCategory },
   { src: brandTypography2, title: 'Brand Typography 2', desc: 'Typography exploration for a brand identity.', category: 'Branding' as GraphicsCategory },
   { src: brandMockup, title: 'Brand Mockup', desc: 'Mockup showcasing the brand identity in context.', category: 'Branding' as GraphicsCategory },
