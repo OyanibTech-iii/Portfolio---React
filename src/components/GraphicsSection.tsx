@@ -21,6 +21,7 @@ import paranoid from '../assets/posters/PARANOID.png'
 import pancit from '../assets/posters/pancit.png'
 import ramen from '../assets/posters/ramen.png'
 import ninoy from '../assets/posters/ninoy.webp'
+import menShoes from '../assets/posters/men shoes.webp'
 import lanyard from '../assets/social media posts/lanyard.png'
 import websiteUi1 from '../assets/website ui/services.png'
 import techwear from '../assets/website ui/techwear.png'
@@ -70,6 +71,7 @@ const graphics = [
   { src: paranoid, title: 'PARANOID', desc: 'Bold poster design with striking paranoid theme and typography.', category: 'Posters' as GraphicsCategory },
   { src: fashion, title: 'Fashion Design', desc: 'Stylish fashion graphic design with a modern aesthetic.', category: 'Posters' as GraphicsCategory },
   { src: ninoy, title: 'Ninoy Aquino', desc: 'Poster design commemorating Ninoy Aquino.', category: 'Posters' as GraphicsCategory },
+  { src: menShoes, title: 'Men Shoes', desc: 'Stylish men shoes poster design with modern aesthetics.', category: 'Posters' as GraphicsCategory },
 ]
 
 export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionProps) {
