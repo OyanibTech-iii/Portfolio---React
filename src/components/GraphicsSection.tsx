@@ -22,6 +22,7 @@ import pancit from '../assets/posters/pancit.png'
 import ramen from '../assets/posters/ramen.png'
 import ninoy from '../assets/posters/ninoy.webp'
 import menShoes from '../assets/posters/men shoes.webp'
+import hiring from '../assets/posters/hiring.webp'
 import lanyard from '../assets/social media posts/lanyard.png'
 import websiteUi1 from '../assets/website ui/services.png'
 import techwear from '../assets/website ui/techwear.png'
@@ -72,6 +73,7 @@ const graphics = [
   { src: fashion, title: 'Fashion Design', desc: 'Stylish fashion graphic design with a modern aesthetic.', category: 'Posters' as GraphicsCategory },
   { src: ninoy, title: 'Ninoy Aquino', desc: 'Poster design commemorating Ninoy Aquino.', category: 'Posters' as GraphicsCategory },
   { src: menShoes, title: 'Men Shoes', desc: 'Stylish men shoes poster design with modern aesthetics.', category: 'Posters' as GraphicsCategory },
+  { src: hiring, title: "We're Hiring", desc: "Hiring flyer for a graphic designer position.", category: 'Posters' as GraphicsCategory },
 ]
 
 export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionProps) {
