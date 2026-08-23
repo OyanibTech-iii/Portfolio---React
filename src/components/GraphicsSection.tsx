@@ -12,7 +12,9 @@ import banner00 from '../assets/social media posts/banner 00.png'
 import frameBahalaNani from '../assets/social media posts/Frame Bahala nani.png'
 import poster from '../assets/posters/POSTER.png'
 import lambo from '../assets/posters/lambo.png'
-import liquid from '../assets/posters/LIQUID.png'
+import liquidGameday from '../assets/posters/liquid gameday.webp'
+import liquidResult from '../assets/posters/liquid result.webp'
+import liquidLose from '../assets/posters/liquid lose.webp'
 import v3 from '../assets/posters/v3.png'
 import harvest from '../assets/posters/harvest.png'
 import practice from '../assets/posters/practice.png'
@@ -46,7 +48,7 @@ export type GraphicsCategory = 'All' | 'Logo' | 'Social Media' | 'Website UI' | 
 const categories: GraphicsCategory[] = ['All', 'Logo', 'Social Media', 'Website UI', 'Posters', 'Branding']
 
 const graphics = [
-  { src: banner00, title: 'Fresh Safe Banner', desc: 'Organic produce promotional banner design.', category: 'Social Media' as GraphicsCategory },
+  { src: misProject, title: 'MIS Final Project', desc: 'Comprehensive branding and UI design for a management system.', category: 'Posters' as GraphicsCategory },
   { src: artboard1, title: 'Brand Logo', desc: 'Brand logo I designed for a vegan restaurant.', category: 'Branding' as GraphicsCategory },
   { src: coloredLogo, title: 'Colored Logo', desc: 'Full-color logo mark with its complete identity.', category: 'Logo' as GraphicsCategory },
   { src: logoLayout, title: 'Logo Layout', desc: 'Logo layout guide with variations and specifications.', category: 'Logo' as GraphicsCategory },
@@ -57,9 +59,11 @@ const graphics = [
   { src: harvest, title: 'Harvest Festival', desc: 'Event poster for a local harvest celebration.', category: 'Posters' as GraphicsCategory },
   { src: frameBahalaNani, title: 'Organization Frame', desc: 'Frame I designed for a school organization.', category: 'Social Media' as GraphicsCategory },
   { src: practice, title: 'Practice Design', desc: 'Practice graphic design piece.', category: 'Posters' as GraphicsCategory },
-  { src: misProject, title: 'MIS Final Project', desc: 'Comprehensive branding and UI design for a management system.', category: 'Posters' as GraphicsCategory },
+  { src: banner00, title: 'Fresh Safe Banner', desc: 'Organic produce promotional banner design.', category: 'Social Media' as GraphicsCategory },
   { src: lambo, title: 'Lambo Poster', desc: 'Modern poster design featuring luxury automotive aesthetics.', category: 'Posters' as GraphicsCategory },
-  { src: liquid, title: 'Liquid Poster', desc: 'Abstract fluid art poster with dynamic visual effects.', category: 'Posters' as GraphicsCategory },
+  { src: liquidGameday, title: 'Liquid Gameday', desc: 'Gameday event poster for Liquid — vibrant and high-energy design.', category: 'Posters' as GraphicsCategory, disclaimer: 'Concept Art / Fan Work Only' },
+  { src: liquidResult, title: 'Liquid Result', desc: 'Post-match results graphic for Liquid with bold, competitive aesthetics.', category: 'Posters' as GraphicsCategory, disclaimer: 'Concept Art / Fan Work Only' },
+  { src: liquidLose, title: 'Liquid Lose', desc: 'Post-match loss graphic for Liquid with a somber and dramatic visual tone.', category: 'Posters' as GraphicsCategory, disclaimer: 'Concept Art / Fan Work Only' },
   { src: poster, title: 'Favorite Cartoon Poster', desc: 'Bold and vibrant poster with striking typography.', category: 'Posters' as GraphicsCategory },
   { src: v3, title: 'V3 Design', desc: 'Version 3 concept design with modern aesthetics.', category: 'Posters' as GraphicsCategory },
   { src: pancit, title: 'Pancit Poster', desc: 'Creative poster design showcasing Filipino Pancit Canton.', category: 'Posters' as GraphicsCategory },
@@ -156,6 +160,12 @@ export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionPr
                   loading="lazy"
                 />
 
+                {item.disclaimer && (
+                  <div className="absolute top-3 left-3 z-10 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-semibold text-white/90 backdrop-blur-sm ring-1 ring-white/20 pointer-events-none">
+                    {item.disclaimer}
+                  </div>
+                )}
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-6">
                   <motion.h3
                     className="text-white font-bold text-lg transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
@@ -165,6 +175,12 @@ export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionPr
                     className="text-white/80 text-sm mt-2 transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 delay-75">
                     {item.desc}
                   </motion.p>
+                  {item.disclaimer && (
+                    <motion.p
+                      className="text-white/50 text-xs mt-1.5 italic transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 delay-100">
+                      {item.disclaimer}
+                    </motion.p>
+                  )}
                 </div>
               </motion.div>
             ))
