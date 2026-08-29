@@ -15,9 +15,7 @@ import lambo from '../assets/posters/lambo.png'
 import liquidGameday from '../assets/posters/liquid gameday.webp'
 import liquidResult from '../assets/posters/liquid result.webp'
 import liquidLose from '../assets/posters/liquid lose.webp'
-import v3 from '../assets/posters/v3.png'
 import harvest from '../assets/posters/harvest.png'
-import practice from '../assets/posters/practice.png'
 import misProject from '../assets/posters/Oyanib_Pacifico_MISFinalProject.png'
 import paranoid from '../assets/posters/PARANOID.png'
 import pancit from '../assets/posters/pancit.png'
@@ -37,6 +35,8 @@ import brandMockup from '../assets/branding/brand_mockup.webp'
 import laptopBagBrand from '../assets/branding/laptop bag brand.png'
 import google from '../assets/social media posts/GOOGLE.webp'
 import mlbb from '../assets/social media posts/MLBB.webp'
+import selfMotivation from '../assets/social media posts/self motivation.png'
+import selfPoster from '../assets/social media posts/self poster.png'
 import fashion from '../assets/graphics2/fashion.webp'
 
 interface GraphicsSectionProps {
@@ -58,14 +58,12 @@ const graphics = [
   { src: lanyard, title: 'Lanyard Design', desc: 'My own version design of our school lanyard.', category: 'Social Media' as GraphicsCategory },
   { src: harvest, title: 'Harvest Festival', desc: 'Event poster for a local harvest celebration.', category: 'Posters' as GraphicsCategory },
   { src: frameBahalaNani, title: 'Organization Frame', desc: 'Frame I designed for a school organization.', category: 'Social Media' as GraphicsCategory },
-  { src: practice, title: 'Practice Design', desc: 'Practice graphic design piece.', category: 'Posters' as GraphicsCategory },
   { src: banner00, title: 'Fresh Safe Banner', desc: 'Organic produce promotional banner design.', category: 'Social Media' as GraphicsCategory },
   { src: lambo, title: 'Lambo Poster', desc: 'Modern poster design featuring luxury automotive aesthetics.', category: 'Posters' as GraphicsCategory },
   { src: liquidGameday, title: 'Liquid Gameday', desc: 'Gameday event poster for Liquid — vibrant and high-energy design.', category: 'Posters' as GraphicsCategory, disclaimer: 'Concept Art / Fan Work Only' },
   { src: liquidResult, title: 'Liquid Result', desc: 'Post-match results graphic for Liquid with bold, competitive aesthetics.', category: 'Posters' as GraphicsCategory, disclaimer: 'Concept Art / Fan Work Only' },
   { src: liquidLose, title: 'Liquid Lose', desc: 'Post-match loss graphic for Liquid with a somber and dramatic visual tone.', category: 'Posters' as GraphicsCategory, disclaimer: 'Concept Art / Fan Work Only' },
   { src: poster, title: 'Favorite Cartoon Poster', desc: 'Bold and vibrant poster with striking typography.', category: 'Posters' as GraphicsCategory },
-  { src: v3, title: 'V3 Design', desc: 'Version 3 concept design with modern aesthetics.', category: 'Posters' as GraphicsCategory },
   { src: pancit, title: 'Pancit Poster', desc: 'Creative poster design showcasing Filipino Pancit Canton.', category: 'Posters' as GraphicsCategory },
   { src: ramen, title: 'Ramen Poster', desc: 'Japanese ramen illustration poster design.', category: 'Posters' as GraphicsCategory },
   { src: brandTypography1, title: 'Brand Typography 1', desc: 'Typography exploration for a brand identity.', category: 'Branding' as GraphicsCategory },
@@ -76,6 +74,8 @@ const graphics = [
   { src: techwear, title: 'Techwear Website UI', desc: 'E-commerce website interface for a techwear brand.', category: 'Website UI' as GraphicsCategory },
   { src: google, title: 'Google Gemini', desc: 'Social media post design featuring Google workshop.', category: 'Social Media' as GraphicsCategory },
   { src: mlbb, title: 'MLBB Tournament', desc: 'Social media post design featuring a Mobile Legends.', category: 'Social Media' as GraphicsCategory },
+  { src: selfMotivation, title: 'Self Motivation', desc: 'Empowering social media post design focusing on self-motivation.', category: 'Social Media' as GraphicsCategory },
+  { src: selfPoster, title: 'Self Poster', desc: 'Creative social media post design with bold typography and aesthetics.', category: 'Social Media' as GraphicsCategory },
   { src: paranoid, title: 'PARANOID', desc: 'Bold poster design with striking paranoid theme and typography.', category: 'Posters' as GraphicsCategory },
   { src: fashion, title: 'Fashion Design', desc: 'Stylish fashion graphic design with a modern aesthetic.', category: 'Posters' as GraphicsCategory },
   { src: ninoy, title: 'Ninoy Aquino', desc: 'Poster design commemorating Ninoy Aquino.', category: 'Posters' as GraphicsCategory },
