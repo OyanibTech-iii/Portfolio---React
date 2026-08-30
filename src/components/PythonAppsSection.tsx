@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { Calculator } from 'lucide-react'
 import { PiCloudArrowDown } from 'react-icons/pi'
 import { Button } from './ui/button'
 
@@ -13,8 +12,7 @@ export default function PythonAppsSection({ onOpenDownloadModal }: PythonAppsSec
       title: 'Determinant Calculator',
       description: 'A powerful Python desktop utility that algorithmically computes determinants of complex matrices, featuring a clean GUI for mathematical operations.',
       technologies: ['Python', 'Matrix Math', 'Desktop UI'],
-      downloadLink: 'https://github.com/OyanibTech-iii/Determinant-Calculator-/archive/refs/tags/determinantAPKv4.0.zip',
-      icon: Calculator
+      downloadLink: 'https://github.com/OyanibTech-iii/Determinant-Calculator-/archive/refs/tags/determinantAPKv4.0.zip'
     }
   ]
 
@@ -39,7 +37,6 @@ export default function PythonAppsSection({ onOpenDownloadModal }: PythonAppsSec
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           {projects.map((project, i) => {
-            const IconComponent = project.icon
             return (
               <motion.div 
                 key={i}
@@ -49,17 +46,12 @@ export default function PythonAppsSection({ onOpenDownloadModal }: PythonAppsSec
                 transition={{ delay: i * 0.1 }}
                 className="group relative flex flex-col rounded-3xl border border-neutral-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl dark:border-neutral-800/80 dark:bg-neutral-900/40 backdrop-blur-sm"
               >
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-shamrock-500/10 text-shamrock-600 dark:bg-shamrock-500/20 dark:text-shamrock-400">
-                    <IconComponent className="h-6 w-6" />
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map(tech => (
-                      <span key={tech} className="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {project.technologies.map(tech => (
+                    <span key={tech} className="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
                 <div className="flex-1">

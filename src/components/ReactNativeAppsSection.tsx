@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion'
-import { type LucideIcon } from 'lucide-react'
 import { PiCloudArrowDown } from 'react-icons/pi'
 import { Button } from './ui/button'
-import growfico3dLogo from '../assets/3d logo.png'
 
 interface ReactNativeAppsSectionProps {
   onOpenDownloadModal: (project: { title: string; downloadLink: string }) => void
@@ -13,7 +11,6 @@ interface AppItem {
   description: string
   technologies: string[]
   downloadLink: string
-  icon: string | LucideIcon
 }
 
 export default function ReactNativeAppsSection({ onOpenDownloadModal }: ReactNativeAppsSectionProps) {
@@ -22,8 +19,7 @@ export default function ReactNativeAppsSection({ onOpenDownloadModal }: ReactNat
       title: 'Growfico Mobile',
       description: 'The React Native mobile version of Growfico, designed for on-the-go agriculture management. Features real-time crop monitoring, sustainability tracking, and offline data support.',
       technologies: ['React Native', 'TypeScript', 'Redux', 'Native Modules'],
-      downloadLink: 'https://github.com/OyanibTech-iii/OyanibTech-iii-APPDEV_B_OYANIB/releases/download/v1.0.0/app-release.apk',
-      icon: growfico3dLogo
+      downloadLink: 'https://github.com/OyanibTech-iii/OyanibTech-iii-APPDEV_B_OYANIB/releases/download/v1.0.0/app-release.apk'
     }
   ]
 
@@ -57,21 +53,12 @@ export default function ReactNativeAppsSection({ onOpenDownloadModal }: ReactNat
                 transition={{ delay: i * 0.1 }}
                 className="group relative flex flex-col rounded-3xl border border-neutral-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl dark:border-neutral-800/80 dark:bg-neutral-900/40 backdrop-blur-sm"
               >
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-shamrock-500/10 text-shamrock-600 dark:bg-shamrock-500/20 dark:text-shamrock-400 overflow-hidden shadow-inner">
-                    {typeof app.icon === 'string' ? (
-                      <img src={app.icon} alt={app.title} className="h-full w-full object-cover p-1" loading="lazy" />
-                    ) : (
-                      <app.icon className="h-6 w-6 md:h-8 md:w-8" />
-                    )}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {app.technologies.map(tech => (
-                      <span key={tech} className="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {app.technologies.map(tech => (
+                    <span key={tech} className="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
                 <div className="flex-1">

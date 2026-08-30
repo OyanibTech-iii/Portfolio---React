@@ -1,10 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Layout, Quote, ShieldAlert } from 'lucide-react'
 import { Button } from './ui/button'
-import ficoLogo from '../assets/fico.png'
-import styledQrLogo from '../assets/officiallogo.png'
-import styledQrLogoDark from '../assets/officiallogo1.png'
 
 export default function WebAPKsSection() {
   const [showAll, setShowAll] = useState(false)
@@ -13,36 +9,30 @@ export default function WebAPKsSection() {
       name: 'Growfico',
       description: 'An innovative agriculture and sustainability platform designed to optimize crop management and promote eco-friendly farming practices.',
       link: 'https://web-dev-deployment-production.up.railway.app',
-      icon: ficoLogo,
       tags: ['Agriculture', 'Sustainability', 'Tech']
     },
     {
       name: 'Vulnerable Test Space',
       description: 'A purposefully vulnerable web application designed as a controlled environment for penetration testing, security auditing, and ethical hacking practice.',
       link: 'https://oyanibtestspace-1.onrender.com',
-      icon: ShieldAlert,
       tags: ['PHP', 'Security', 'Pentesting']
     },
     {
       name: 'Styled QR',
       description: 'A sophisticated QR code generator that allows for custom styling, branding, and high-resolution exports for professional use.',
       link: 'https://styledqr.onrender.com',
-      icon: styledQrLogo,
-      darkIcon: styledQrLogoDark,
       tags: ['Next.js', 'Utility', 'Design']
     },
     {
       name: 'Web App Launcher',
       description: 'A robust progressive web app platform designed for seamless launching and centralized management of multiple web applications.',
       link: 'https://webapplaucher.netlify.app/',
-      icon: Layout,
       tags: ['React', 'PWA', 'Productivity']
     },
     {
       name: 'Random Quote Generator',
       description: 'An inspirational digital space that algorithmically delivers curated quotes for focus, motivation, and creative spark.',
       link: 'https://randomqt-quotegenerator.netlify.app/',
-      icon: Quote,
       tags: ['API', 'Frontend', 'Design']
     }
   ]
@@ -68,7 +58,6 @@ export default function WebAPKsSection() {
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           {apks.slice(0, showAll ? apks.length : 4).map((apk, i) => {
-            const IconComponent = typeof apk.icon === 'string' ? null : apk.icon
             return (
               <motion.div 
                 key={i}
@@ -78,26 +67,12 @@ export default function WebAPKsSection() {
                 transition={{ delay: i * 0.1 }}
                 className="group relative flex flex-col rounded-3xl border border-neutral-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl dark:border-neutral-800/80 dark:bg-neutral-900/40 backdrop-blur-sm"
               >
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-shamrock-500/10 text-shamrock-600 dark:bg-shamrock-500/20 dark:text-shamrock-400 overflow-hidden shadow-inner">
-                    {IconComponent ? (
-                      <IconComponent className="h-6 w-6" />
-                    ) : (
-                      <>
-                        <img src={apk.icon as string} alt={apk.name} className={`h-full w-full object-cover p-1 ${'darkIcon' in apk && apk.darkIcon ? 'dark:hidden' : ''}`} loading="lazy" />
-                        {'darkIcon' in apk && apk.darkIcon ? (
-                          <img src={(apk as { darkIcon: string }).darkIcon} alt={apk.name} className="hidden h-full w-full object-cover p-1 dark:block" loading="lazy" />
-                        ) : null}
-                      </>
-                    )}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {apk.tags.map(tag => (
-                      <span key={tag} className="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {apk.tags.map(tag => (
+                    <span key={tag} className="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
 
                 <div className="flex-1">

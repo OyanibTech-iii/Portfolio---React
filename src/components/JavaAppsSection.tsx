@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { Database, FileCode } from 'lucide-react'
 import { PiCloudArrowDown } from 'react-icons/pi'
 import { Button } from './ui/button'
 
@@ -13,15 +12,13 @@ export default function JavaAppsSection({ onOpenDownloadModal }: JavaAppsSection
       title: 'ATM System',
       description: 'A comprehensive ATM application showcasing OOP principles including encapsulation, inheritance, and abstraction. Implements transaction management, user authentication, and account operations.',
       technologies: ['Java', 'OOP', 'CLI', 'File I/O'],
-      downloadLink: 'https://github.com/OyanibTech-iii/ATM---OOP/archive/refs/tags/javaATM.zip',
-      icon: Database
+      downloadLink: 'https://github.com/OyanibTech-iii/ATM---OOP/archive/refs/tags/javaATM.zip'
     },
     {
       title: 'Movie Booking',
       description: 'A movie booking desktop application featuring seat selection, ticket management, and reservation system. Built with Java showcasing database integration and user-friendly interface design.',
       technologies: ['Java', 'OOP', 'CLI', 'Booking System'],
-      downloadLink: 'https://github.com/OyanibTech-iii/MovieBooking---Java/archive/refs/tags/jarfile.zip',
-      icon: FileCode
+      downloadLink: 'https://github.com/OyanibTech-iii/MovieBooking---Java/archive/refs/tags/jarfile.zip'
     }
   ]
 
@@ -29,7 +26,6 @@ export default function JavaAppsSection({ onOpenDownloadModal }: JavaAppsSection
     <section id="java-desktop" className="mt-20 py-12">
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-col items-center text-center mb-12">
-        
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +43,6 @@ export default function JavaAppsSection({ onOpenDownloadModal }: JavaAppsSection
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           {projects.map((project, i) => {
-            const IconComponent = project.icon
             return (
               <motion.div 
                 key={i}
@@ -57,17 +52,12 @@ export default function JavaAppsSection({ onOpenDownloadModal }: JavaAppsSection
                 transition={{ delay: i * 0.1 }}
                 className="group relative flex flex-col rounded-3xl border border-neutral-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl dark:border-neutral-800/80 dark:bg-neutral-900/40 backdrop-blur-sm"
               >
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-shamrock-500/10 text-shamrock-600 dark:bg-shamrock-500/20 dark:text-shamrock-400">
-                    <IconComponent className="h-6 w-6" />
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map(tech => (
-                      <span key={tech} className="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {project.technologies.map(tech => (
+                    <span key={tech} className="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
                 <div className="flex-1">
