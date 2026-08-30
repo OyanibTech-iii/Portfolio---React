@@ -51,7 +51,7 @@ export type GraphicsCategory = 'All' | 'Logo' | 'Social Media' | 'Website UI' | 
 const categories: GraphicsCategory[] = ['All', 'Logo', 'Social Media', 'Website UI', 'Posters', 'Branding', 'T-Shirt']
 
 const graphics = [
-  { src: misProject, title: 'MIS Final Project', desc: 'Comprehensive branding and UI design for a management system.', category: 'Posters' as GraphicsCategory },
+  { src: harvest, title: 'Harvest Festival', desc: 'Event poster for a local harvest celebration.', category: 'Posters' as GraphicsCategory },
   { src: artboard1, title: 'Brand Logo', desc: 'Brand logo I designed for a vegan restaurant.', category: 'Branding' as GraphicsCategory },
   { src: coloredLogo, title: 'Colored Logo', desc: 'Full-color logo mark with its complete identity.', category: 'Logo' as GraphicsCategory },
   { src: logoLayout, title: 'Logo Layout', desc: 'Logo layout guide with variations and specifications.', category: 'Logo' as GraphicsCategory },
@@ -59,7 +59,7 @@ const graphics = [
   { src: laptopbagBalance, title: 'Laptopbag Logo', desc: 'Balanced logo design for a laptop bag brand.', category: 'Logo' as GraphicsCategory },
   { src: branding, title: 'Brand Identity', desc: 'Complete brand identity system and application.', category: 'Branding' as GraphicsCategory },
   { src: lanyard, title: 'Lanyard Design', desc: 'My own version design of our school lanyard.', category: 'Social Media' as GraphicsCategory },
-  { src: harvest, title: 'Harvest Festival', desc: 'Event poster for a local harvest celebration.', category: 'Posters' as GraphicsCategory },
+  { src: misProject, title: 'MIS Final Project', desc: 'Comprehensive branding and UI design for a management system.', category: 'Posters' as GraphicsCategory },
   { src: frameBahalaNani, title: 'Organization Frame', desc: 'Frame I designed for a school organization.', category: 'Social Media' as GraphicsCategory },
   { src: banner00, title: 'Fresh Safe Banner', desc: 'Organic produce promotional banner design.', category: 'Social Media' as GraphicsCategory },
   { src: lambo, title: 'Lambo Poster', desc: 'Modern poster design featuring luxury automotive aesthetics.', category: 'Posters' as GraphicsCategory },
@@ -123,10 +123,12 @@ export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionPr
           {categories.map((category) => (
             <button
               key={category}
+              type="button"
+              aria-pressed={activeCategory === category}
               onClick={() => setActiveCategory(category)}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer select-none ${
                 activeCategory === category
-                  ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
+                  ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-sm scale-105'
                   : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700'
               }`}
             >
