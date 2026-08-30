@@ -38,6 +38,8 @@ import mlbb from '../assets/social media posts/MLBB.webp'
 import selfMotivation from '../assets/social media posts/self motivation.png'
 import selfPoster from '../assets/social media posts/self poster.png'
 import fashion from '../assets/graphics2/fashion.webp'
+import sinamakanPoster from '../assets/posters/sinamakan.png'
+import sinamakanMockup from '../assets/social media posts/makap.png'
 
 interface GraphicsSectionProps {
   onOpenDeviceModal?: (d: { src: string; title: string; desc: string }) => void
@@ -76,6 +78,8 @@ const graphics = [
   { src: mlbb, title: 'MLBB Tournament', desc: 'Social media post design featuring a Mobile Legends.', category: 'Social Media' as GraphicsCategory },
   { src: selfMotivation, title: 'Self Motivation', desc: 'Empowering social media post design focusing on self-motivation.', category: 'Social Media' as GraphicsCategory },
   { src: selfPoster, title: 'Self Poster', desc: 'Creative social media post design with bold typography and aesthetics.', category: 'Social Media' as GraphicsCategory },
+  { src: sinamakanMockup, title: 'Sinamak Design Mockup', desc: 'Product mockup for Sinamak spiced vinegar social media presentation.', category: 'Social Media' as GraphicsCategory },
+  { src: sinamakanPoster, title: 'Sinamak Poster', desc: 'Vibrant poster design showcasing Sinamak spiced vinegar branding.', category: 'Posters' as GraphicsCategory },
   { src: paranoid, title: 'PARANOID', desc: 'Bold poster design with striking paranoid theme and typography.', category: 'Posters' as GraphicsCategory },
   { src: fashion, title: 'Fashion Design', desc: 'Stylish fashion graphic design with a modern aesthetic.', category: 'Posters' as GraphicsCategory },
   { src: ninoy, title: 'Ninoy Aquino', desc: 'Poster design commemorating Ninoy Aquino.', category: 'Posters' as GraphicsCategory },
