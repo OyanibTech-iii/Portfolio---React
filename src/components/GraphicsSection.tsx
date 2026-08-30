@@ -40,10 +40,13 @@ import selfPoster from '../assets/social media posts/self poster.png'
 import fashion from '../assets/graphics2/fashion.webp'
 import sinamakanPoster from '../assets/posters/sinamakan.png'
 import sinamakanMockup from '../assets/social media posts/makap.png'
-import simpleShirtDesign from '../assets/t-shirt design/SIMPLE SHIRT DESIGN.png'
+import bsitPlain from '../assets/t-shirt design/bsit plain.png'
+import bsitPlainWhole from '../assets/t-shirt design/bsit palin whole.png'
+import oversizeShirt from '../assets/t-shirt design/oversize.png'
+import campusShirt from '../assets/t-shirt design/campus.png'
 
 interface GraphicsSectionProps {
-  onOpenDeviceModal?: (d: { src: string; title: string; desc: string }) => void
+  onOpenDeviceModal?: (d: { src: string; title: string; desc: string; images?: string[] }) => void
 }
 
 export type GraphicsCategory = 'All' | 'Logo' | 'Social Media' | 'Website UI' | 'Posters' | 'Branding' | 'T-Shirt'
@@ -89,7 +92,9 @@ const graphics = [
   { src: avocadoIcecream, title: 'Avocado Ice Cream', desc: 'Vibrant avocado ice cream poster design with a fresh and tropical aesthetic.', category: 'Posters' as GraphicsCategory },
   { src: strawberryIcecream, title: 'Strawberry Ice Cream', desc: 'Sweet and luscious strawberry ice cream poster with a bold, colorful design.', category: 'Posters' as GraphicsCategory },
   { src: vanillaIcecream, title: 'Vanilla Ice Cream', desc: 'Classic and elegant vanilla ice cream poster with a clean, minimalist look.', category: 'Posters' as GraphicsCategory },
-  { src: simpleShirtDesign, title: 'Simple Shirt Design', desc: 'Minimalist custom t-shirt graphic design.', category: 'T-Shirt' as GraphicsCategory },
+  { src: bsitPlainWhole, images: [bsitPlainWhole, bsitPlain], title: 'BSIT T-Shirt Design Concept', desc: 'Concept BSIT shirt design showcasing full and detailed views from multiple angles.', category: 'T-Shirt' as GraphicsCategory },
+  { src: campusShirt, title: 'Campus T-Shirt Design Concept', desc: 'Concept t-shirt graphic design for campus streetwear.', category: 'T-Shirt' as GraphicsCategory },
+  { src: oversizeShirt, title: 'Oversize T-Shirt Design', desc: 'Modern streetwear oversized fit custom t-shirt graphic design.', category: 'T-Shirt' as GraphicsCategory },
 ]
 
 export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionProps) {
@@ -151,7 +156,7 @@ export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionPr
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                onClick={() => onOpenDeviceModal?.({ src: item.src, title: item.title, desc: item.desc })}
+                onClick={() => onOpenDeviceModal?.({ src: item.src, title: item.title, desc: item.desc, images: item.images })}
                 className={`group relative overflow-hidden rounded-2xl cursor-pointer bg-neutral-100 dark:bg-neutral-800 ${
                   activeCategory === 'All'
                     ? i === 0 || i === 3
@@ -174,6 +179,13 @@ export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionPr
                   </div>
                 )}
 
+                {item.images && item.images.length > 1 && (
+                  <div className="absolute top-3 right-3 z-10 flex items-center gap-1 rounded-full bg-shamrock-600/90 px-3 py-1 text-xs font-bold text-white shadow-lg backdrop-blur-sm ring-1 ring-white/30 pointer-events-none transition-transform duration-300 group-hover:scale-105">
+                    <span>+{item.images.length - 1} More</span>
+                    <span className="text-[10px] opacity-80 font-normal">| Click to view</span>
+                  </div>
+                )}
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-6">
                   <motion.h3
                     className="text-white font-bold text-lg transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
@@ -183,6 +195,11 @@ export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionPr
                     className="text-white/80 text-sm mt-2 transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 delay-75">
                     {item.desc}
                   </motion.p>
+                  {item.images && item.images.length > 1 && (
+                    <motion.span className="inline-flex items-center gap-1 text-xs text-shamrock-300 font-semibold mt-2 transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 delay-100">
+                      Click card to view all {item.images.length} views
+                    </motion.span>
+                  )}
                   {item.disclaimer && (
                     <motion.p
                       className="text-white/50 text-xs mt-1.5 italic transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 delay-100">
