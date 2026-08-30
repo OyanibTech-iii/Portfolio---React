@@ -40,14 +40,15 @@ import selfPoster from '../assets/social media posts/self poster.png'
 import fashion from '../assets/graphics2/fashion.webp'
 import sinamakanPoster from '../assets/posters/sinamakan.png'
 import sinamakanMockup from '../assets/social media posts/makap.png'
+import simpleShirtDesign from '../assets/t-shirt design/SIMPLE SHIRT DESIGN.png'
 
 interface GraphicsSectionProps {
   onOpenDeviceModal?: (d: { src: string; title: string; desc: string }) => void
 }
 
-export type GraphicsCategory = 'All' | 'Logo' | 'Social Media' | 'Website UI' | 'Posters' | 'Branding'
+export type GraphicsCategory = 'All' | 'Logo' | 'Social Media' | 'Website UI' | 'Posters' | 'Branding' | 'T-Shirt'
 
-const categories: GraphicsCategory[] = ['All', 'Logo', 'Social Media', 'Website UI', 'Posters', 'Branding']
+const categories: GraphicsCategory[] = ['All', 'Logo', 'Social Media', 'Website UI', 'Posters', 'Branding', 'T-Shirt']
 
 const graphics = [
   { src: misProject, title: 'MIS Final Project', desc: 'Comprehensive branding and UI design for a management system.', category: 'Posters' as GraphicsCategory },
@@ -88,6 +89,7 @@ const graphics = [
   { src: avocadoIcecream, title: 'Avocado Ice Cream', desc: 'Vibrant avocado ice cream poster design with a fresh and tropical aesthetic.', category: 'Posters' as GraphicsCategory },
   { src: strawberryIcecream, title: 'Strawberry Ice Cream', desc: 'Sweet and luscious strawberry ice cream poster with a bold, colorful design.', category: 'Posters' as GraphicsCategory },
   { src: vanillaIcecream, title: 'Vanilla Ice Cream', desc: 'Classic and elegant vanilla ice cream poster with a clean, minimalist look.', category: 'Posters' as GraphicsCategory },
+  { src: simpleShirtDesign, title: 'Simple Shirt Design', desc: 'Minimalist custom t-shirt graphic design.', category: 'T-Shirt' as GraphicsCategory },
 ]
 
 export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionProps) {
