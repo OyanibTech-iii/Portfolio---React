@@ -153,66 +153,91 @@ export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionPr
               description={`There are currently no designs in the ${activeCategory.toLowerCase()} category.`}
             />
           ) : (
-            filtered.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                onClick={() => onOpenDeviceModal?.({ src: item.src, title: item.title, desc: item.desc, images: item.images })}
-                className={`group relative overflow-hidden rounded-2xl cursor-pointer bg-neutral-100 dark:bg-neutral-800 ${
-                  activeCategory === 'All'
-                    ? i === 0 || i === 3
-                      ? 'md:col-span-2 md:row-span-2'
+            filtered.map((item, i) => {
+              const isLarge = activeCategory === 'All' && (i === 0 || i === 3)
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  onClick={() => onOpenDeviceModal?.({ src: item.src, title: item.title, desc: item.desc, images: item.images })}
+                  className={`group relative overflow-hidden rounded-2xl cursor-pointer bg-neutral-100 dark:bg-neutral-800 ${
+                    activeCategory === 'All'
+                      ? isLarge
+                        ? 'md:col-span-2 md:row-span-2'
+                        : 'md:col-span-1 md:row-span-1'
                       : 'md:col-span-1 md:row-span-1'
-                    : 'md:col-span-1 md:row-span-1'
-                }`}
-              >
-                <ImageWithSkeleton
-                  src={item.src}
-                  alt={item.title}
-                  className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-110"
-                  containerClassName="h-full w-full"
-                  loading="lazy"
-                />
+                  }`}
+                >
+                  <ImageWithSkeleton
+                    src={item.src}
+                    alt={item.title}
+                    className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-110"
+                    containerClassName="h-full w-full"
+                    loading="lazy"
+                  />
 
-                {item.disclaimer && (
-                  <div className="absolute top-3 left-3 z-10 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-semibold text-white/90 backdrop-blur-sm ring-1 ring-white/20 pointer-events-none">
-                    {item.disclaimer}
-                  </div>
-                )}
-
-                {item.images && item.images.length > 1 && (
-                  <div className="absolute top-3 right-3 z-10 flex items-center gap-1 rounded-full bg-shamrock-600/90 px-3 py-1 text-xs font-bold text-white shadow-lg backdrop-blur-sm ring-1 ring-white/30 pointer-events-none transition-transform duration-300 group-hover:scale-105">
-                    <span>+{item.images.length - 1} More</span>
-                    <span className="text-[10px] opacity-80 font-normal">| Click to view</span>
-                  </div>
-                )}
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-6">
-                  <motion.h3
-                    className="text-white font-bold text-lg transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
-                    {item.title}
-                  </motion.h3>
-                  <motion.p
-                    className="text-white/80 text-sm mt-2 transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 delay-75">
-                    {item.desc}
-                  </motion.p>
-                  {item.images && item.images.length > 1 && (
-                    <motion.span className="inline-flex items-center gap-1 text-xs text-shamrock-300 font-semibold mt-2 transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 delay-100">
-                      Click card to view all {item.images.length} views
-                    </motion.span>
-                  )}
                   {item.disclaimer && (
-                    <motion.p
-                      className="text-white/50 text-xs mt-1.5 italic transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 delay-100">
+                    <div className="absolute top-3 left-3 z-10 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-semibold text-white/90 backdrop-blur-sm ring-1 ring-white/20 pointer-events-none">
                       {item.disclaimer}
-                    </motion.p>
+                    </div>
                   )}
-                </div>
-              </motion.div>
-            ))
+
+                  {item.images && item.images.length > 1 && (
+                    <div className="absolute top-3 right-3 z-10 flex items-center gap-1 rounded-full bg-shamrock-600/90 px-2.5 py-1 text-[10px] sm:text-xs font-bold text-white shadow-lg backdrop-blur-sm ring-1 ring-white/30 pointer-events-none transition-transform duration-300 group-hover:scale-105">
+                      <span>+{item.images.length - 1} More</span>
+                      <span className="hidden sm:inline text-[10px] opacity-80 font-normal">| Click to view</span>
+                    </div>
+                  )}
+
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end ${
+                    activeCategory === 'All'
+                      ? isLarge
+                        ? 'p-4 sm:p-6'
+                        : 'p-3 sm:p-4'
+                      : 'p-3.5 sm:p-5'
+                  }`}>
+                    <motion.h3
+                      className={`text-white font-bold transform translate-y-3 transition-transform duration-300 group-hover:translate-y-0 ${
+                        activeCategory === 'All'
+                          ? isLarge
+                            ? 'text-base sm:text-lg'
+                            : 'text-xs sm:text-sm line-clamp-1'
+                          : 'text-sm sm:text-base line-clamp-1'
+                      }`}>
+                      {item.title}
+                    </motion.h3>
+                    <motion.p
+                      className={`text-white/80 transform translate-y-3 transition-transform duration-300 group-hover:translate-y-0 delay-75 ${
+                        activeCategory === 'All'
+                          ? isLarge
+                            ? 'text-xs sm:text-sm mt-1.5 line-clamp-3'
+                            : 'text-[11px] sm:text-xs mt-0.5 line-clamp-2'
+                          : 'text-xs mt-1 line-clamp-2'
+                      }`}>
+                      {item.desc}
+                    </motion.p>
+                    {item.images && item.images.length > 1 && (
+                      <motion.span className={`inline-flex items-center gap-1 text-shamrock-300 font-semibold transform translate-y-3 transition-transform duration-300 group-hover:translate-y-0 delay-100 ${
+                        activeCategory === 'All' && !isLarge ? 'text-[10px] mt-0.5' : 'text-xs mt-1'
+                      }`}>
+                        Click to view all {item.images.length} views
+                      </motion.span>
+                    )}
+                    {item.disclaimer && (
+                      <motion.p
+                        className={`text-white/50 italic transform translate-y-3 transition-transform duration-300 group-hover:translate-y-0 delay-100 ${
+                          activeCategory === 'All' && !isLarge ? 'text-[10px] mt-0.5' : 'text-xs mt-1'
+                        }`}>
+                        {item.disclaimer}
+                      </motion.p>
+                    )}
+                  </div>
+                </motion.div>
+              )
+            })
           )}
         </div>
       </div>
