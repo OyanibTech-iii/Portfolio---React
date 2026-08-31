@@ -44,6 +44,8 @@ import bsitPlain from '../assets/t-shirt design/bsit plain.png'
 import bsitPlainWhole from '../assets/t-shirt design/bsit palin whole.png'
 import oversizeShirt from '../assets/t-shirt design/oversize.png'
 import campusShirt from '../assets/t-shirt design/campus.png'
+import bsitTribalShirt from '../assets/t-shirt design/bsint tribal concept.png'
+import kababaihanSweatshirt from '../assets/t-shirt design/kababaihan sweetshirt.png'
 
 interface GraphicsSectionProps {
   onOpenDeviceModal?: (d: { src: string; title: string; desc: string; images?: string[] }) => void
@@ -95,6 +97,8 @@ const graphics = [
   { src: bsitPlainWhole, images: [bsitPlainWhole, bsitPlain], title: 'BSIT T-Shirt Design Concept', desc: 'Concept BSIT shirt design showcasing full and detailed views from multiple angles.', category: 'T-Shirt' as GraphicsCategory },
   { src: campusShirt, title: 'Campus T-Shirt Design Concept', desc: 'Concept t-shirt graphic design for campus streetwear.', category: 'T-Shirt' as GraphicsCategory },
   { src: oversizeShirt, title: 'Oversize T-Shirt Design', desc: 'Modern streetwear oversized fit custom t-shirt graphic design.', category: 'T-Shirt' as GraphicsCategory },
+  { src: bsitTribalShirt, title: 'BSIT Tribal Concept T-Shirt', desc: 'Tribal-inspired concept t-shirt graphic design for BSIT.', category: 'T-Shirt' as GraphicsCategory },
+  { src: kababaihanSweatshirt, title: 'Kababaihan Sweatshirt Design', desc: 'Custom graphic sweatshirt design celebrating Kababaihan.', category: 'T-Shirt' as GraphicsCategory },
 ]
 
 export default function GraphicsSection({ onOpenDeviceModal }: GraphicsSectionProps) {
