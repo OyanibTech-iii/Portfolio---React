@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import GraphicsSection from './components/GraphicsSection'
+import FacebookSection from './components/FacebookSection'
 import LayoutsSection from './components/LayoutsSection'
 import WebAPKsSection from './components/WebAPKsSection'
 import YouTubeTutorialsSection from './components/YouTubeTutorialsSection'
@@ -198,6 +199,7 @@ function Portfolio() {
         <AboutSection onOpenCertModal={openCertModal} />
         <WorkshopsSection />
         <GraphicsSection onOpenDeviceModal={openDeviceModal} />
+        <FacebookSection />
         <LayoutsSection onOpenDeviceModal={openDeviceModal} />
         <WebAPKsSection />
         <YouTubeTutorialsSection />

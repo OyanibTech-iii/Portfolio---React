@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react'
+import { ExternalLink } from 'lucide-react'
+import { Facebook } from 'react-feather'
 
 interface DeviceModalProps {
-  device: { src: string; title: string; desc: string; images?: string[] } | null
+  device: {
+    src: string
+    title: string
+    desc: string
+    images?: string[]
+    link?: string
+    externalText?: string
+  } | null
   onClose: () => void
 }
 
@@ -70,6 +79,21 @@ export default function DeviceModal({ device, onClose }: DeviceModalProps) {
           <p className="mt-2 text-neutral-600 dark:text-neutral-400">
             {device.desc}
           </p>
+
+          {device.link && (
+            <div className="mt-4">
+              <a
+                href={device.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-600 dark:hover:bg-blue-500"
+              >
+                <Facebook className="h-4 w-4" />
+                <span>{device.externalText || 'View Post on Facebook'}</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+          )}
 
           {images.length > 1 && (
             <div className="mt-5 flex items-center gap-3">

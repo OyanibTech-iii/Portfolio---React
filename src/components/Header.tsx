@@ -8,6 +8,7 @@ const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Graphics', href: '#graphics' },
+  { label: 'Facebook', href: '#facebook-posts' },
   { label: 'Layouts', href: '#layouts' },
   { label: 'Web', href: '#web-apks' },
   { label: 'Mobile', href: '#mobile-apps' },
